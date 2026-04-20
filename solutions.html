@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solutions — Spectral Insight</title>
+  <meta name="description" content="Six detection models for vineyard health, delivered monthly." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-orbit"></div>
+    <div class="loader-progress"></div>
+    <div class="loader-label">INITIALIZING · DETECTION MODELS</div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-follow"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <canvas class="starfield" id="starfield"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" data-hover>
+        <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+      </a>
+      <nav class="nav-links">
+        <a href="technology.html" data-hover>Technology</a>
+        <a href="solutions.html" class="active" data-hover>Solutions</a>
+        <a href="about.html" data-hover>About</a>
+        <a href="insights.html" data-hover>Field Notes</a>
+        <a href="contact.html" data-hover>Contact</a>
+      </nav>
+      <a href="contact.html" class="cta-pill" data-hover>
+        <span>Request Analysis</span>
+        <span class="cta-arrow">→</span>
+      </a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="technology.html">Technology</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="insights.html">Field Notes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-bg">
+      <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=2400&q=85" alt="" />
+    </div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Spectral Insight</a>
+        <span class="sep">/</span>
+        <span>Solutions</span>
+      </div>
+      <h1 class="page-title split-reveal">
+        <span class="word"><span>Six</span></span>
+        <span class="word"><span class="gradient-text">signals.</span></span><br>
+        <span class="word"><span>Every</span></span>
+        <span class="word"><span class="gradient-text-warm">pass.</span></span>
+      </h1>
+      <p class="page-subtitle">
+        Each of our detection models is a dedicated pipeline — built, tuned,
+        and validated on Ontario vineyards. Here's what every one of them
+        actually does.
+      </p>
+    </div>
+  </section>
+
+  <!-- DETECT ROWS -->
+  <section class="tech-section">
+    <div class="container">
+      <div class="detect-stack">
+
+        <div class="detect-row" id="virology" data-hover>
+          <div class="detect-img" style="background-image:url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1200&q=85');"></div>
+          <div class="detect-body">
+            <div class="tag">01 · VIROLOGY</div>
+            <h3>Leafroll &amp; Red Blotch detection</h3>
+            <p>
+              Grapevine leafroll-associated viruses and red-blotch-associated
+              virus both depress photosynthetic efficiency long before visual
+              symptoms show. The reflectance shape shifts in the red edge
+              (690–760 nm) and near-infrared plateau.
+            </p>
+            <p>
+              Our classifier scores every canopy pixel against a panel-level
+              virus probability and flags suspect zones as early as mid-June
+              — often a full growing season before a scout would note change.
+            </p>
+            <div class="detect-stats">
+              <div><div class="n">94%</div><div class="l">True-positive rate</div></div>
+              <div><div class="n">~3 wk</div><div class="l">Lead vs. visual</div></div>
+              <div><div class="n">Vitis-tuned</div><div class="l">Ontario cultivars</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detect-row" id="hydrology" data-hover>
+          <div class="detect-img" style="background-image:url('https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=1200&q=85');"></div>
+          <div class="detect-body">
+            <div class="tag">02 · HYDROLOGY</div>
+            <h3>Water stress mapping</h3>
+            <p>
+              Short-wave infrared bands around 970 nm and 1450 nm are
+              direct absorbers of leaf water content. Stressed tissue
+              shows a distinctive flattening across those troughs — even
+              when the canopy still looks green.
+            </p>
+            <p>
+              We convert that signal into a per-panel Crop Water Stress Index
+              so you can irrigate where it actually matters, not on a blanket
+              schedule, and avoid over-watering your reds.
+            </p>
+            <div class="detect-stats">
+              <div><div class="n">5 m</div><div class="l">Panel resolution</div></div>
+              <div><div class="n">Weekly</div><div class="l">Update cadence</div></div>
+              <div><div class="n">CWSI</div><div class="l">Output metric</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detect-row" id="nutrition" data-hover>
+          <div class="detect-img" style="background-image:url('https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1200&q=85');"></div>
+          <div class="detect-body">
+            <div class="tag">03 · NUTRITION</div>
+            <h3>Nutrient deficiency mapping</h3>
+            <p>
+              Nitrogen deficiency manifests as a blue-shift in the chlorophyll
+              absorption peak. Potassium and magnesium show up further out in
+              the red-edge. Each has its own fingerprint.
+            </p>
+            <p>
+              The model identifies anomaly clusters and suggests which tissue-test
+              sites would confirm the diagnosis — turning your petiole sampling
+              into informed sampling, not guesswork.
+            </p>
+            <div class="detect-stats">
+              <div><div class="n">N · K · Mg</div><div class="l">Elements scored</div></div>
+              <div><div class="n">Panel</div><div class="l">Resolution</div></div>
+              <div><div class="n">Confirmatory</div><div class="l">Pairs with tissue tests</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detect-row" id="canopy" data-hover>
+          <div class="detect-img" style="background-image:url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1200&q=85');"></div>
+          <div class="detect-body">
+            <div class="tag">04 · CANOPY</div>
+            <h3>Vigor &amp; uniformity zones</h3>
+            <p>
+              Canopy density is the classical use-case for satellite imagery
+              — but hyperspectral adds decomposition. We can tell you whether
+              a low-vigor zone is low because of water, virus, nutrition, or
+              simply because the soil changes.
+            </p>
+            <p>
+              The output is a four-zone management map that matches what your
+              tractor driver already intuits — now made explicit, and differentiated
+              by underlying cause.
+            </p>
+            <div class="detect-stats">
+              <div><div class="n">4-zone</div><div class="l">Map output</div></div>
+              <div><div class="n">Cause-tagged</div><div class="l">Per zone</div></div>
+              <div><div class="n">Yield-correlated</div><div class="l">Validated to harvest</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detect-row" id="phenology" data-hover>
+          <div class="detect-img" style="background-image:url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=1200&q=85');"></div>
+          <div class="detect-body">
+            <div class="tag">05 · PHENOLOGY</div>
+            <h3>Season tracking &amp; baseline</h3>
+            <p>
+              Reflectance curves change shape over the season — flat in April,
+              peaking at mid-summer, shifting again at veraison. Your block has
+              its own curve. Our model builds a five-year baseline of it.
+            </p>
+            <p>
+              When the current season diverges from the baseline, the report
+              tells you where and by how much. Advance or delay, zone by zone.
+            </p>
+            <div class="detect-stats">
+              <div><div class="n">5-year</div><div class="l">Rolling baseline</div></div>
+              <div><div class="n">Δ-flag</div><div class="l">Divergence alerting</div></div>
+              <div><div class="n">Per block</div><div class="l">Curve tracked</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detect-row" id="climate" data-hover>
+          <div class="detect-img" style="background-image:url('https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?w=1200&q=85');"></div>
+          <div class="detect-body">
+            <div class="tag">06 · CLIMATE</div>
+            <h3>Frost &amp; heat-risk exposure</h3>
+            <p>
+              Using your own topography, aspect, and elevation — derived from
+              the same satellite stack — we rank each block's vulnerability to
+              late-spring frost and mid-summer heat-spike events.
+            </p>
+            <p>
+              Paired with Ontario climate history, this becomes a forward-looking
+              exposure score: which blocks to protect first, which blocks buffer
+              themselves.
+            </p>
+            <div class="detect-stats">
+              <div><div class="n">Block-level</div><div class="l">Risk score</div></div>
+              <div><div class="n">30 yr</div><div class="l">Climate baseline</div></div>
+              <div><div class="n">Topo-aware</div><div class="l">Aspect + elevation</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REPORT PREVIEW -->
+  <section class="tech-section" style="border-top: 1px solid var(--line);">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        07 · THE OUTPUT
+      </div>
+      <h2 class="h-big">
+        All six models collapse into <span class="gradient-text">one short email.</span>
+      </h2>
+      <p class="lead" style="max-width: 60ch;">
+        The whole point is to save your time, not spend it. Every month during
+        the season, you get a two-page brief — a block-level map, a short
+        human-written summary, and three recommended walks for this week.
+      </p>
+
+      <div class="tech-split" style="margin-top: 60px;">
+        <div class="data-card">
+          <div class="data-card-head">
+            <h4>Monthly brief · Sample</h4>
+            <span class="live"><span class="pulse-dot"></span>PDF · 2 PAGES</span>
+          </div>
+          <div style="padding: 12px 0;">
+            <h3 style="font-family: var(--font-display); font-size: 22px; margin-bottom: 16px;">
+              Block 3 · August Brief
+            </h3>
+            <p style="color: var(--ink-2); font-size: 14px; margin-bottom: 16px;">
+              <span style="color: var(--acc-3);">◆</span> Virus flag in NE corner, panels 14–18. Low probability but
+              warrants a confirmatory scout.
+            </p>
+            <p style="color: var(--ink-2); font-size: 14px; margin-bottom: 16px;">
+              <span style="color: var(--warm-1);">◆</span> Water stress climbing in row 22–28. Consider irrigation
+              before Friday's forecast heat event.
+            </p>
+            <p style="color: var(--ink-2); font-size: 14px;">
+              <span style="color: var(--acc-2);">◆</span> Phenology running 6 days ahead of your five-year baseline —
+              veraison likely late next week.
+            </p>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-family: var(--font-display); font-weight: 500; font-size: 28px; letter-spacing: -0.02em; margin-bottom: 16px;">
+            Written by a human. Every time.
+          </h3>
+          <p class="lead">
+            Every report is read by an actual agronomist before it leaves our
+            hands. If the model flagged something the ground-truth doesn't
+            support, we catch it. If the model missed something our eyes see,
+            we add it.
+          </p>
+          <p class="lead">
+            Autopilot reporting is the fastest way to lose a grower's trust.
+            We've chosen slower and better.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <div class="container">
+      <div style="max-width: 700px; text-align:center; margin: 0 auto;">
+        <h2 class="h-big">
+          Want a free first pass on your <span class="gradient-text-warm">own blocks?</span>
+        </h2>
+        <p class="lead" style="margin-left:auto; margin-right:auto;">
+          Send us a boundary and we'll send you a sample report — the real thing,
+          not a brochure.
+        </p>
+        <div style="margin-top: 40px;">
+          <a href="contact.html" class="btn btn-primary magnetic" data-hover>
+            <span>Request a sample</span>
+            <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+          </div>
+          <p class="muted">Hyperspectral intelligence for Ontario vineyards. Built in wine country.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="insights.html">Field Notes</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Technology</h4>
+            <a href="technology.html">Hyperspectral</a>
+            <a href="solutions.html">Detection models</a>
+            <a href="technology.html#pipeline">Pipeline</a>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <a href="#">LinkedIn</a>
+            <a href="#">X / Twitter</a>
+            <a href="mailto:hello@spectralinsight.ai">hello@spectralinsight.ai</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Spectral Insight · Ontario, Canada</span>
+        <span class="mono">47.2574°N · 79.0668°W</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

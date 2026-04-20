@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technology — Spectral Insight</title>
+  <meta name="description" content="Hyperspectral satellite imaging technology for vineyard health monitoring." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-orbit"></div>
+    <div class="loader-progress"></div>
+    <div class="loader-label">INITIALIZING · TECHNOLOGY BRIEF</div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-follow"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <canvas class="starfield" id="starfield"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" data-hover>
+        <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+      </a>
+      <nav class="nav-links">
+        <a href="technology.html" class="active" data-hover>Technology</a>
+        <a href="solutions.html" data-hover>Solutions</a>
+        <a href="about.html" data-hover>About</a>
+        <a href="insights.html" data-hover>Field Notes</a>
+        <a href="contact.html" data-hover>Contact</a>
+      </nav>
+      <a href="contact.html" class="cta-pill" data-hover>
+        <span>Request Analysis</span>
+        <span class="cta-arrow">→</span>
+      </a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="technology.html">Technology</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="insights.html">Field Notes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-bg">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=2400&q=85" alt="" />
+    </div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Spectral Insight</a>
+        <span class="sep">/</span>
+        <span>Technology</span>
+      </div>
+      <h1 class="page-title split-reveal">
+        <span class="word"><span>The</span></span>
+        <span class="word"><span>light</span></span>
+        <span class="word"><span>a</span></span>
+        <span class="word"><span class="gradient-text">leaf</span></span>
+        <span class="word"><span class="gradient-text">reflects,</span></span><br>
+        <span class="word"><span>read</span></span>
+        <span class="word"><span>from</span></span>
+        <span class="word"><span class="gradient-text-warm">orbit.</span></span>
+      </h1>
+      <p class="page-subtitle">
+        A plain-English walkthrough of what hyperspectral imaging
+        actually is, why 250 narrow bands matter, and how a satellite
+        pass becomes an email you can act on.
+      </p>
+    </div>
+  </section>
+
+  <!-- SPEC STRIP -->
+  <section class="strip">
+    <div class="strip-track">
+      <span>◆ CAPTURE: 250 BANDS · 400–2500nm</span>
+      <span>◆ RESOLUTION: 5m / PIXEL</span>
+      <span>◆ REVISIT: ~5 DAYS</span>
+      <span>◆ MODELS: VITIS-TRAINED · COOL-CLIMATE</span>
+      <span>◆ DELIVERY: MONTHLY PDF + PNG + WEB MAP</span>
+      <span>◆ CAPTURE: 250 BANDS · 400–2500nm</span>
+      <span>◆ RESOLUTION: 5m / PIXEL</span>
+      <span>◆ REVISIT: ~5 DAYS</span>
+      <span>◆ MODELS: VITIS-TRAINED · COOL-CLIMATE</span>
+      <span>◆ DELIVERY: MONTHLY PDF + PNG + WEB MAP</span>
+    </div>
+  </section>
+
+  <!-- SECTION 1: What is hyperspectral -->
+  <section class="tech-section" id="hyperspectral">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        01 · THE SPECTRUM
+      </div>
+      <div class="tech-split">
+        <div>
+          <h2 class="h-big">
+            Multispectral has a <span class="gradient-text">crayon box.</span>
+            Hyperspectral has the <span class="italic gradient-text-warm">rainbow.</span>
+          </h2>
+          <p class="lead">
+            A traditional multispectral satellite captures 4–10 broad
+            color buckets — roughly like describing a painting using red,
+            green, blue, and one infrared.
+          </p>
+          <p class="lead">
+            A hyperspectral sensor slices the same light into 200+
+            razor-thin bands. Each band sees a specific molecular
+            signature — water at 970nm, chlorophyll at 680nm, cell-wall
+            lignin out near 2200nm.
+          </p>
+          <p class="lead">
+            Plant stress doesn't show up as a color shift. It shows up
+            as a <em>shape</em> change in that reflectance curve.
+            Hyperspectral is the only instrument that can see the shape.
+          </p>
+        </div>
+        <div class="tech-viz">
+          <img src="https://images.unsplash.com/photo-1462332420958-a05d1e002413?w=1200&q=85" alt="" />
+          <div class="tech-viz-overlay"></div>
+        </div>
+      </div>
+
+      <!-- Big spectrum visualization -->
+      <div class="spectrum-vis" style="margin: 100px 0 60px; height: 160px;">
+        <div class="spectrum-band" style="inset: 60px 0 auto 0; height: 50px;"></div>
+        <div class="spectrum-marker m1" style="height: 140px;"><span>450nm · BLUE EDGE</span></div>
+        <div class="spectrum-marker m2" style="height: 140px;"><span>680nm · CHLOROPHYLL</span></div>
+        <div class="spectrum-marker m3" style="height: 140px;"><span>970nm · WATER</span></div>
+        <div class="spectrum-marker m4" style="height: 140px;"><span>1450nm · WATER</span></div>
+        <div class="spectrum-marker m5" style="height: 140px;"><span>2200nm · LIGNIN</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: The Satellite -->
+  <section class="tech-section" id="satellite">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        02 · THE INSTRUMENT
+      </div>
+      <div class="tech-split reverse">
+        <div>
+          <h2 class="h-big">
+            A <span class="gradient-text">push-broom</span> sensor, ten kilometres per second.
+          </h2>
+          <p class="lead">
+            The satellites we partner with fly in a sun-synchronous
+            polar orbit at roughly 525 km altitude. As the craft moves,
+            a line of detectors scans the ground beneath it — one row
+            of spectra at a time, tens of thousands of times a second.
+          </p>
+          <p class="lead">
+            Each resulting image is a three-dimensional data cube:
+            length × width × wavelength. A single 1 km × 1 km tile can
+            contain 50+ million individual spectra. Your vineyard is in
+            there somewhere — and so is its signature.
+          </p>
+
+          <table class="spec-table">
+            <tr><th>Parameter</th><th>Value</th></tr>
+            <tr><td>Spectral range</td><td>400 – 2500 nm</td></tr>
+            <tr><td>Spectral bands</td><td>250+ narrow channels</td></tr>
+            <tr><td>Ground sample distance</td><td>5 m / pixel</td></tr>
+            <tr><td>Swath width</td><td>40 km</td></tr>
+            <tr><td>Revisit cadence</td><td>~5 days</td></tr>
+            <tr><td>Orbital altitude</td><td>525 km</td></tr>
+          </table>
+        </div>
+
+        <div>
+          <!-- Live satellite data card -->
+          <div class="data-card" data-hover>
+            <div class="data-card-head">
+              <h4>Acquisition Channel</h4>
+              <span class="live"><span class="pulse-dot"></span>LIVE</span>
+            </div>
+            <div class="data-grid">
+              <div class="data-item">
+                <div class="val" id="liveAlt">525.3</div>
+                <div class="lbl">Altitude · km</div>
+              </div>
+              <div class="data-item">
+                <div class="val" id="liveVel">7.62</div>
+                <div class="lbl">Velocity · km/s</div>
+              </div>
+              <div class="data-item">
+                <div class="val" id="liveLat">47.24°N</div>
+                <div class="lbl">Sub-point</div>
+              </div>
+              <div class="data-item">
+                <div class="val" id="liveBand">680nm</div>
+                <div class="lbl">Current band</div>
+              </div>
+            </div>
+            <!-- Mini waveform -->
+            <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line);">
+              <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--ink-mute); margin-bottom: 12px;">REFLECTANCE · BLOCK 03</div>
+              <svg viewBox="0 0 300 60" width="100%" height="60" style="display:block;">
+                <defs>
+                  <linearGradient id="wg" x1="0" x2="1">
+                    <stop offset="0" stop-color="#7a5cff"/>
+                    <stop offset="1" stop-color="#5affd1"/>
+                  </linearGradient>
+                </defs>
+                <path id="waveform" d="M0,30 Q30,10 60,30 T120,30 T180,30 T240,30 T300,30"
+                      stroke="url(#wg)" stroke-width="1.5" fill="none"
+                      class="draw-path"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: The Models -->
+  <section class="tech-section" id="models">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        03 · THE MODELS
+      </div>
+      <div class="tech-split">
+        <div>
+          <h2 class="h-big">
+            Trained on <span class="gradient-text">Vitis vinifera</span>,
+            not Iowa corn.
+          </h2>
+          <p class="lead">
+            Off-the-shelf vegetation indices — NDVI, NDRE, SAVI — were
+            designed for commodity row crops in open-field, hot-summer
+            geometry. They describe a vineyard only loosely.
+          </p>
+          <p class="lead">
+            Our detection models are fine-tuned on three years of paired
+            hyperspectral cubes and ground-truth scout notes from Ontario
+            vineyards specifically. They know what Cabernet Franc leafroll
+            looks like at 680nm in mid-August, in mist, with a north-facing slope.
+          </p>
+          <p class="lead">
+            Every anomaly flag is also reviewed by a human before it
+            leaves our hands. No autopilot reports.
+          </p>
+        </div>
+        <div class="tech-viz">
+          <img src="https://images.unsplash.com/photo-1474440692490-2e83ae13ba29?w=1200&q=85" alt="" />
+          <div class="tech-viz-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Pipeline Diagram -->
+  <section class="tech-section" id="pipeline">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        04 · THE PIPELINE
+      </div>
+      <h2 class="h-big">
+        From <span class="gradient-text">photons</span> to a
+        <span class="gradient-text-warm">paragraph.</span>
+      </h2>
+
+      <div class="tech-hero-diagram">
+        <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- grid backdrop -->
+          <defs>
+            <pattern id="tg" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0 L0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            </pattern>
+            <linearGradient id="fg" x1="0" x2="1">
+              <stop offset="0" stop-color="#7a5cff"/>
+              <stop offset="0.5" stop-color="#35c3ff"/>
+              <stop offset="1" stop-color="#5affd1"/>
+            </linearGradient>
+          </defs>
+          <rect width="1000" height="500" fill="url(#tg)"/>
+
+          <!-- satellite -->
+          <circle cx="150" cy="100" r="30" fill="none" stroke="rgba(255,255,255,0.3)" stroke-dasharray="3 3"/>
+          <rect x="140" y="90" width="20" height="20" fill="#c9f0ff"/>
+          <rect x="130" y="95" width="10" height="10" fill="#7fb8d6"/>
+          <rect x="160" y="95" width="10" height="10" fill="#7fb8d6"/>
+          <text x="150" y="160" fill="#b9bfce" text-anchor="middle" font-family="JetBrains Mono" font-size="11" letter-spacing="2">SATELLITE</text>
+
+          <!-- beam -->
+          <path d="M150,130 L300,350 L350,350 L200,130 Z" fill="url(#fg)" opacity="0.15"/>
+
+          <!-- vineyard -->
+          <rect x="280" y="340" width="140" height="80" rx="4" fill="#0b0d14" stroke="url(#fg)" stroke-width="1"/>
+          <line x1="295" y1="355" x2="295" y2="405" stroke="rgba(90,255,209,0.4)"/>
+          <line x1="310" y1="355" x2="310" y2="405" stroke="rgba(90,255,209,0.4)"/>
+          <line x1="325" y1="355" x2="325" y2="405" stroke="rgba(90,255,209,0.4)"/>
+          <line x1="340" y1="355" x2="340" y2="405" stroke="rgba(90,255,209,0.4)"/>
+          <line x1="355" y1="355" x2="355" y2="405" stroke="rgba(90,255,209,0.4)"/>
+          <line x1="370" y1="355" x2="370" y2="405" stroke="rgba(90,255,209,0.4)"/>
+          <line x1="385" y1="355" x2="385" y2="405" stroke="rgba(90,255,209,0.4)"/>
+          <line x1="400" y1="355" x2="400" y2="405" stroke="rgba(90,255,209,0.4)"/>
+          <text x="350" y="440" fill="#b9bfce" text-anchor="middle" font-family="JetBrains Mono" font-size="11" letter-spacing="2">VINEYARD · 47.2°N</text>
+
+          <!-- flow arrow 1 -->
+          <path class="draw-path" d="M430 380 L540 380" stroke="url(#fg)" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+
+          <!-- data cube -->
+          <g transform="translate(560,340)">
+            <rect x="0" y="0" width="80" height="80" fill="#0b0d14" stroke="url(#fg)"/>
+            <rect x="10" y="-10" width="80" height="80" fill="#0b0d14" stroke="url(#fg)" opacity="0.6"/>
+            <rect x="20" y="-20" width="80" height="80" fill="#0b0d14" stroke="url(#fg)" opacity="0.3"/>
+          </g>
+          <text x="600" y="440" fill="#b9bfce" text-anchor="middle" font-family="JetBrains Mono" font-size="11" letter-spacing="2">DATA CUBE</text>
+
+          <!-- flow arrow 2 -->
+          <path class="draw-path" d="M670 380 L780 380" stroke="url(#fg)" stroke-width="2" fill="none"/>
+
+          <!-- Report -->
+          <g transform="translate(800,330)">
+            <rect x="0" y="0" width="100" height="110" rx="4" fill="#0b0d14" stroke="url(#fg)"/>
+            <line x1="10" y1="20" x2="90" y2="20" stroke="#5affd1" stroke-width="2"/>
+            <line x1="10" y1="35" x2="80" y2="35" stroke="#b9bfce" stroke-width="1"/>
+            <line x1="10" y1="45" x2="85" y2="45" stroke="#b9bfce" stroke-width="1"/>
+            <line x1="10" y1="55" x2="70" y2="55" stroke="#b9bfce" stroke-width="1"/>
+            <rect x="10" y="70" width="80" height="30" fill="url(#fg)" opacity="0.3"/>
+          </g>
+          <text x="850" y="460" fill="#b9bfce" text-anchor="middle" font-family="JetBrains Mono" font-size="11" letter-spacing="2">YOUR INBOX</text>
+
+          <!-- curves around -->
+          <path class="draw-path" d="M150 70 Q 400 20 700 80" stroke="rgba(53,195,255,0.3)" stroke-width="1" fill="none" stroke-dasharray="3 5"/>
+        </svg>
+      </div>
+
+      <div class="tech-grid" style="margin-top: 60px;">
+        <div class="tech-card" data-hover>
+          <div class="tech-num">PIPE · 01</div>
+          <h3>Atmospheric correction</h3>
+          <p>We strip out the atmosphere — haze, aerosol, water vapor — so what remains is the vine, not the sky between you and the vine.</p>
+        </div>
+        <div class="tech-card" data-hover>
+          <div class="tech-num">PIPE · 02</div>
+          <h3>Vine isolation</h3>
+          <p>Row-masking, bare-soil rejection, shadow correction — so you're never measuring the inter-row dust when you think you're measuring canopy.</p>
+        </div>
+        <div class="tech-card" data-hover>
+          <div class="tech-num">PIPE · 03</div>
+          <h3>Signature extraction</h3>
+          <p>Per-panel reflectance curves pulled and stored against your own historical baseline. Anomalies are flagged where they diverge.</p>
+        </div>
+        <div class="tech-card" data-hover>
+          <div class="tech-num">PIPE · 04</div>
+          <h3>Virus classifier</h3>
+          <p>A lightweight neural net scoring every panel for leafroll / red-blotch / GRBV probability on a 0–1 scale.</p>
+        </div>
+        <div class="tech-card" data-hover>
+          <div class="tech-num">PIPE · 05</div>
+          <h3>Water-status model</h3>
+          <p>SWIR band ratios converted to Crop Water Stress Index, per panel, calibrated to your climate zone.</p>
+        </div>
+        <div class="tech-card" data-hover>
+          <div class="tech-num">PIPE · 06</div>
+          <h3>Human-in-the-loop</h3>
+          <p>A real agronomist reads the flagged anomalies, writes a short brief, and sends the email. Every time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="tech-section" id="faq">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        05 · QUESTIONS WE GET A LOT
+      </div>
+      <h2 class="h-big">Straight answers.</h2>
+
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-q" data-hover>
+            How is this different from drone imagery?
+            <span class="plus"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            A drone is a flashlight; we're a streetlight. Drones give you
+            great resolution on one flight day with weather-dependent
+            timing. We give you consistent, calibrated coverage on a
+            schedule, across the whole season, for the whole property,
+            without a pilot on site.
+          </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" data-hover>
+            Can you see through clouds?
+            <span class="plus"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            Optical satellites can't see through dense cloud cover.
+            What they can do is revisit frequently enough that one clear
+            pass per month is almost always available in Ontario's
+            growing season. Our revisit cadence is tuned for this.
+          </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" data-hover>
+            Do I need to install anything on the property?
+            <span class="plus"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            No sensors, no ground stations, no app installs. The only
+            "onboarding" is a fifteen-minute call where we capture your
+            block boundaries on a shared map.
+          </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" data-hover>
+            What's the smallest vineyard you work with?
+            <span class="plus"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            We regularly work with growers in the 5 – 30 hectare range.
+            Pixel resolution is consistent — a small vineyard isn't
+            a small report.
+          </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" data-hover>
+            What does a monthly report actually look like?
+            <span class="plus"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            A two-page PDF: page one is a block-level map with flagged
+            panels, page two is a short written brief — the three things
+            to walk out and look at this week, and why. Plus a PNG suitable
+            for your farm-management software.
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <div class="container">
+      <div style="max-width: 700px; text-align:center; margin: 0 auto;">
+        <h2 class="h-big">
+          Want to see your own <span class="gradient-text">spectral fingerprint?</span>
+        </h2>
+        <p class="lead" style="margin-left:auto; margin-right:auto;">
+          Tell us about your vineyard and we'll pull a free sample pass
+          — no commitment — so you can see what the data looks like on your
+          own ground.
+        </p>
+        <div style="margin-top: 40px;">
+          <a href="contact.html" class="btn btn-primary magnetic" data-hover>
+            <span>Request a sample pass</span>
+            <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+          </div>
+          <p class="muted">Hyperspectral intelligence for Ontario vineyards. Built in wine country.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="insights.html">Field Notes</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Technology</h4>
+            <a href="technology.html">Hyperspectral</a>
+            <a href="solutions.html">Detection models</a>
+            <a href="technology.html#pipeline">Pipeline</a>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <a href="#">LinkedIn</a>
+            <a href="#">X / Twitter</a>
+            <a href="mailto:hello@spectralinsight.ai">hello@spectralinsight.ai</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Spectral Insight · Ontario, Canada</span>
+        <span class="mono">47.2574°N · 79.0668°W</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

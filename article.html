@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What a Niagara Cabernet Franc block reveals at 970 nanometers — Spectral Insight</title>
+  <meta name="description" content="A walk through one week's reflectance curve." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-orbit"></div>
+    <div class="loader-progress"></div>
+    <div class="loader-label">LOADING · ARTICLE</div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-follow"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <canvas class="starfield" id="starfield"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" data-hover>
+        <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+      </a>
+      <nav class="nav-links">
+        <a href="technology.html" data-hover>Technology</a>
+        <a href="solutions.html" data-hover>Solutions</a>
+        <a href="about.html" data-hover>About</a>
+        <a href="insights.html" class="active" data-hover>Field Notes</a>
+        <a href="contact.html" data-hover>Contact</a>
+      </nav>
+      <a href="contact.html" class="cta-pill" data-hover>
+        <span>Request Analysis</span>
+        <span class="cta-arrow">→</span>
+      </a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="technology.html">Technology</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="insights.html">Field Notes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <article class="article">
+    <div class="container">
+      <div class="article-wrap">
+
+        <div class="breadcrumb" style="margin-top: 40px;">
+          <a href="index.html">Spectral Insight</a>
+          <span class="sep">/</span>
+          <a href="insights.html">Field Notes</a>
+          <span class="sep">/</span>
+          <span>Essay</span>
+        </div>
+
+        <h1 class="page-title" style="font-size: clamp(36px, 5vw, 64px); padding-top: 40px;">
+          What a Niagara Cabernet Franc block reveals at
+          <span class="gradient-text">970 nanometers.</span>
+        </h1>
+
+        <div class="article-meta">
+          <span class="article-tag">ESSAY</span>
+          <span>6 MIN READ</span>
+          <span>APRIL 2026</span>
+          <span>TOM RIVERA</span>
+        </div>
+
+        <img class="article-hero-img" src="https://images.unsplash.com/photo-1528825871115-3581a5387919?w=2000&q=85" alt="" />
+
+        <p>
+          It was the second week of July. The Niagara Escarpment was
+          dry — dryer than it had been that early in ten years — and
+          the grower I was standing with walked me down a row of
+          Cabernet Franc that looked, to the naked eye, perfect.
+          Uniform canopy. Good leaf posture. Tan bark. Nothing wrong.
+        </p>
+
+        <p>
+          We had a report from that morning's satellite pass open on
+          the tablet. And the tablet was telling a different story.
+        </p>
+
+        <h2>What the 970nm band actually measures</h2>
+
+        <p>
+          Water molecules absorb strongly at around 970 nanometers —
+          deep in the near-infrared, well beyond anything your eye
+          can register. When a leaf is fully hydrated, the 970nm
+          trough in its reflectance curve is a sharp, clear dip.
+          When water content drops, that trough fills in: the dip
+          flattens out, not because the leaf is sending out a signal,
+          but because there's simply less water molecule to do the
+          absorbing.
+        </p>
+
+        <blockquote>
+          "You can't look at a vine and know it's thirsty.
+          You can only look at the reflectance curve and know that
+          it's stopped being able to lie."
+        </blockquote>
+
+        <p>
+          In our pipeline, 970nm is one of four anchor bands we pull
+          from every panel on every pass. We normalize it against the
+          plateau around 850nm (which tracks canopy structure, not
+          water) and compute a per-panel Water Index. A healthy,
+          hydrated vine under Niagara summer conditions sits between
+          0.12 and 0.18 on this index.
+        </p>
+
+        <p>That block's Water Index values, that morning:</p>
+
+        <ul>
+          <li>Row 1–8: 0.14 (normal)</li>
+          <li>Row 9–14: 0.09 (climbing into stress)</li>
+          <li>Row 15–22: <strong style="color: var(--warm-1)">0.06 (significant stress)</strong></li>
+          <li>Row 23–30: 0.13 (normal)</li>
+        </ul>
+
+        <h2>Why rows 15–22 and nowhere else</h2>
+
+        <p>
+          We walked them. And of course once you know where to look,
+          the vines tell you. Slightly thinner lateral growth. Leaf
+          angles very, very subtly steeper. A tiny curl at the edge
+          of the fourth-node leaves. A scout walking normally would
+          have picked these up in another ten to fourteen days —
+          maybe a little sooner if they were having a good day.
+          But not that morning. We had caught it early.
+        </p>
+
+        <p>
+          The cause turned out to be mundane. A dripline on that
+          block-segment had a partial block from root growth, and
+          was delivering maybe 40% of its intended flow to those
+          rows. Caught then, it was a thirty-minute fix. Caught at
+          veraison, it would have cost the grower quality points
+          and brix uniformity across the block.
+        </p>
+
+        <h2>The lesson isn't the 970nm band</h2>
+
+        <p>
+          The 970nm trough is interesting mostly because of what it
+          demonstrates. Plant stress is almost always detectable
+          somewhere in the spectrum before it is visible on the
+          surface. Water, nitrogen, chlorophyll breakdown, structural
+          changes in cell walls — all of these have absorption
+          signatures in the 400-2500nm range that a hyperspectral
+          sensor can resolve.
+        </p>
+
+        <p>
+          The scout's job hasn't changed. What's changed is what
+          the scout knows to look at, and when to look. Hyperspectral
+          doesn't replace feet in the rows. It tells feet which rows.
+        </p>
+
+        <h3>Where we go from here</h3>
+
+        <p>
+          That Cab Franc block is now on continuous monitoring. We pull
+          the Water Index every pass and the grower gets a ten-day lead
+          on any repeat stress episode. Three dripline checks later, it's
+          been a normal season. Whether it would have been a normal season
+          without the satellite, we'll never know.
+        </p>
+
+        <p>
+          That's the thing about early detection. The reward is the absence
+          of a bad story.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- RELATED -->
+  <section class="tech-section" style="border-top: 1px solid var(--line);">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        MORE NOTES
+      </div>
+      <div class="insight-grid" style="margin-top: 20px;">
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80" alt="" />
+          <div class="insight-meta">CASE · 4 MIN</div>
+          <h3>Catching leafroll three weeks before a scout could.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=80" alt="" />
+          <div class="insight-meta">NOTE · 3 MIN</div>
+          <h3>Why hyperspectral is not just multispectral with more pixels.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=900&q=80" alt="" />
+          <div class="insight-meta">ESSAY · 5 MIN</div>
+          <h3>The 1450-nanometer trough: how a satellite knows your vines are thirsty.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+          </div>
+          <p class="muted">Hyperspectral intelligence for Ontario vineyards. Built in wine country.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="insights.html">Field Notes</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Technology</h4>
+            <a href="technology.html">Hyperspectral</a>
+            <a href="solutions.html">Detection models</a>
+            <a href="technology.html#pipeline">Pipeline</a>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <a href="#">LinkedIn</a>
+            <a href="#">X / Twitter</a>
+            <a href="mailto:hello@spectralinsight.ai">hello@spectralinsight.ai</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Spectral Insight · Ontario, Canada</span>
+        <span class="mono">47.2574°N · 79.0668°W</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

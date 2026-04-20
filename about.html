@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Spectral Insight</title>
+  <meta name="description" content="A small team in Ontario wine country turning orbital signal into morning-coffee reading." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-orbit"></div>
+    <div class="loader-progress"></div>
+    <div class="loader-label">INITIALIZING · ABOUT</div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-follow"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <canvas class="starfield" id="starfield"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" data-hover>
+        <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+      </a>
+      <nav class="nav-links">
+        <a href="technology.html" data-hover>Technology</a>
+        <a href="solutions.html" data-hover>Solutions</a>
+        <a href="about.html" class="active" data-hover>About</a>
+        <a href="insights.html" data-hover>Field Notes</a>
+        <a href="contact.html" data-hover>Contact</a>
+      </nav>
+      <a href="contact.html" class="cta-pill" data-hover>
+        <span>Request Analysis</span>
+        <span class="cta-arrow">→</span>
+      </a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="technology.html">Technology</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="insights.html">Field Notes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-bg">
+      <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=2400&q=85" alt="" />
+    </div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Spectral Insight</a>
+        <span class="sep">/</span>
+        <span>About</span>
+      </div>
+      <h1 class="page-title split-reveal">
+        <span class="word"><span>A</span></span>
+        <span class="word"><span>small</span></span>
+        <span class="word"><span>team,</span></span><br>
+        <span class="word"><span>rooted</span></span>
+        <span class="word"><span>in</span></span>
+        <span class="word"><span class="gradient-text-warm">wine</span></span>
+        <span class="word"><span class="gradient-text-warm">country.</span></span>
+      </h1>
+      <p class="page-subtitle">
+        Spectral Insight was founded by people who knew Niagara vineyards
+        before they knew hyperspectral. We work for growers, not platforms.
+      </p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="tech-section">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        01 · STORY
+      </div>
+      <div class="tech-split">
+        <div>
+          <h2 class="h-big">
+            It started in a <span class="gradient-text">Cab Franc</span> block.
+          </h2>
+          <p class="lead">
+            In 2022, one of our founders was walking a vineyard in the
+            Beamsville Bench when the owner pointed at a perfectly healthy-looking
+            row and said: "something's wrong there, but I can't tell you why."
+          </p>
+          <p class="lead">
+            Two months later, half the row came down with leafroll.
+            The vines had been signalling stress for weeks — in wavelengths
+            the human eye simply cannot see.
+          </p>
+          <p class="lead">
+            Spectral Insight exists because that conversation has happened in
+            every wine region, every year, for the last century. And because
+            — finally — we have the satellites to end it.
+          </p>
+        </div>
+        <div class="tech-viz">
+          <img src="https://images.unsplash.com/photo-1470162656305-6f429ba817bf?w=1200&q=85" alt="" />
+          <div class="tech-viz-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="tech-section">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        02 · WHAT WE BELIEVE
+      </div>
+      <h2 class="h-big">Four rules we run on.</h2>
+
+      <div class="values-grid">
+        <div class="value-cell" data-hover>
+          <div class="num">I</div>
+          <h3>Answers, not data.</h3>
+          <p>A grower does not want a GeoTIFF. A grower wants to know where
+          to walk this afternoon. We exist to close that gap.</p>
+        </div>
+        <div class="value-cell" data-hover>
+          <div class="num">II</div>
+          <h3>Pick up the phone.</h3>
+          <p>Every client has a direct line to a human who knows their
+          property. No ticket queues, no bot triage, no "we'll get back to you."</p>
+        </div>
+        <div class="value-cell" data-hover>
+          <div class="num">III</div>
+          <h3>Local first.</h3>
+          <p>We do one thing — Ontario vineyards — and we do it carefully.
+          Generic tools trained on Iowa corn are why growers stopped
+          trusting remote-sensing fifteen years ago.</p>
+        </div>
+        <div class="value-cell" data-hover>
+          <div class="num">IV</div>
+          <h3>Honest about limits.</h3>
+          <p>Clouds exist. Snow exists. Some weeks we won't have a clean
+          pass. We'd rather tell you so than fabricate certainty.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="tech-section">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        03 · TIMELINE
+      </div>
+      <h2 class="h-big">Where we've been.</h2>
+
+      <div class="timeline">
+        <div class="timeline-item" data-hover>
+          <div class="year">2022</div>
+          <div>
+            <h4>The Beamsville Bench conversation</h4>
+            <p>Maya meets a grower who can see stress but can't diagnose it. The idea starts here.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-hover>
+          <div class="year">2023</div>
+          <div>
+            <h4>First validated model</h4>
+            <p>Leafroll detection model achieves 88% TPR on a six-vineyard pilot across Niagara.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-hover>
+          <div class="year">2024</div>
+          <div>
+            <h4>Tom joins · full coverage</h4>
+            <p>Agronomy brought in-house. Coverage expanded to all three Ontario DVAs.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-hover>
+          <div class="year">2025</div>
+          <div>
+            <h4>Second-generation pipeline</h4>
+            <p>All six detection models live. Monthly-brief format stabilized. First 30 paying growers.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-hover>
+          <div class="year">2026</div>
+          <div>
+            <h4>This season</h4>
+            <p>Model v2.1 — tighter SWIR integration, better panel-level resolution. Onboarding the next cohort now.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMBERS -->
+  <section class="tech-section" style="border-top: 1px solid var(--line);">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        04 · BY THE NUMBERS
+      </div>
+      <h2 class="h-big">Ontario coverage, <span class="gradient-text">2026 season.</span></h2>
+      <div class="hero-stats" style="max-width: 100%; grid-template-columns: repeat(4, 1fr); margin-top: 40px;">
+        <div class="stat">
+          <div class="stat-num" data-count="47">0</div>
+          <div class="stat-label">Vineyards covered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="1240">0</div>
+          <div class="stat-label">Hectares imaged</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="3">0</div>
+          <div class="stat-label">Ontario DVAs</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Human-read reports</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <div class="container">
+      <div style="max-width: 700px; text-align:center; margin: 0 auto;">
+        <h2 class="h-big">
+          Come <span class="gradient-text-warm">say hello.</span>
+        </h2>
+        <p class="lead" style="margin-left:auto; margin-right:auto;">
+          We like the call that starts "I don't really get what you do but my neighbour mentioned you."
+        </p>
+        <div style="margin-top: 40px;">
+          <a href="contact.html" class="btn btn-primary magnetic" data-hover>
+            <span>Start a conversation</span>
+            <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+          </div>
+          <p class="muted">Hyperspectral intelligence for Ontario vineyards. Built in wine country.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="insights.html">Field Notes</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Technology</h4>
+            <a href="technology.html">Hyperspectral</a>
+            <a href="solutions.html">Detection models</a>
+            <a href="technology.html#pipeline">Pipeline</a>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <a href="#">LinkedIn</a>
+            <a href="#">X / Twitter</a>
+            <a href="mailto:hello@spectralinsight.ai">hello@spectralinsight.ai</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Spectral Insight · Ontario, Canada</span>
+        <span class="mono">47.2574°N · 79.0668°W</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

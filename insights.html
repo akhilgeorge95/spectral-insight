@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Field Notes — Spectral Insight</title>
+  <meta name="description" content="Essays, case studies, and technical notes from the field." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-orbit"></div>
+    <div class="loader-progress"></div>
+    <div class="loader-label">INITIALIZING · FIELD NOTES</div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-follow"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <canvas class="starfield" id="starfield"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" data-hover>
+        <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+      </a>
+      <nav class="nav-links">
+        <a href="technology.html" data-hover>Technology</a>
+        <a href="solutions.html" data-hover>Solutions</a>
+        <a href="about.html" data-hover>About</a>
+        <a href="insights.html" class="active" data-hover>Field Notes</a>
+        <a href="contact.html" data-hover>Contact</a>
+      </nav>
+      <a href="contact.html" class="cta-pill" data-hover>
+        <span>Request Analysis</span>
+        <span class="cta-arrow">→</span>
+      </a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="technology.html">Technology</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="insights.html">Field Notes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="page-header-bg">
+      <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?w=2400&q=85" alt="" />
+    </div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Spectral Insight</a>
+        <span class="sep">/</span>
+        <span>Field Notes</span>
+      </div>
+      <h1 class="page-title split-reveal">
+        <span class="word"><span>Field</span></span>
+        <span class="word"><span class="gradient-text">Notes.</span></span>
+      </h1>
+      <p class="page-subtitle">
+        Essays, case studies, and technical notes from Ontario wine country.
+        Written by people who walk the rows.
+      </p>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <section class="tech-section">
+    <div class="container">
+      <a href="article.html" class="insight-card" style="display:block; border-radius: var(--radius-lg); overflow: hidden; max-width: 100%;" data-hover>
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 0;">
+          <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?w=2000&q=85" alt="" style="aspect-ratio: 4/3; object-fit: cover; height: 100%;" />
+          <div style="padding: 48px; display: flex; flex-direction: column; justify-content: center;">
+            <div class="insight-meta" style="padding: 0; margin-bottom: 20px;">FEATURED · ESSAY · 6 MIN</div>
+            <h2 class="h-big" style="font-size: clamp(26px, 3vw, 40px); margin-bottom: 16px;">
+              What a Niagara Cabernet Franc block reveals at 970 nanometers.
+            </h2>
+            <p class="lead" style="margin-bottom: 24px;">
+              A walk through one week's reflectance curve — and what the
+              dip at 970nm was trying to tell us three weeks before
+              scouting confirmed it.
+            </p>
+            <div class="sol-link" style="border:none; padding:0; font-size: 14px;">Read article <span>→</span></div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="tech-section" style="border-top: 1px solid var(--line);">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        ALL NOTES
+      </div>
+
+      <div class="insight-grid" style="margin-top: 20px;">
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80" alt="" />
+          <div class="insight-meta">CASE · 4 MIN</div>
+          <h3>Catching leafroll three weeks before a scout could.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=80" alt="" />
+          <div class="insight-meta">NOTE · 3 MIN</div>
+          <h3>Why hyperspectral is not just multispectral with more pixels.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=900&q=80" alt="" />
+          <div class="insight-meta">ESSAY · 5 MIN</div>
+          <h3>The 1450-nanometer trough: how a satellite knows your vines are thirsty.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?w=900&q=80" alt="" />
+          <div class="insight-meta">CASE · 6 MIN</div>
+          <h3>A Prince Edward County frost pocket, mapped from orbit.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=900&q=80" alt="" />
+          <div class="insight-meta">NOTE · 4 MIN</div>
+          <h3>NDVI is a blunt instrument. Here's what we use instead.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=900&q=80" alt="" />
+          <div class="insight-meta">ESSAY · 7 MIN</div>
+          <h3>Phenology baselines — why year one of a contract isn't the valuable year.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=900&q=80" alt="" />
+          <div class="insight-meta">CASE · 5 MIN</div>
+          <h3>Finding a management zone hidden in plain sight, Beamsville Bench.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=900&q=80" alt="" />
+          <div class="insight-meta">NOTE · 3 MIN</div>
+          <h3>Why we always ship a human-written brief. Always.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?w=900&q=80" alt="" />
+          <div class="insight-meta">ESSAY · 6 MIN</div>
+          <h3>Red Blotch Virus: an acoustic weather-change for Ontario.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <div class="container">
+      <div style="max-width: 700px; text-align:center; margin: 0 auto;">
+        <h2 class="h-big">
+          Get <span class="gradient-text">one note a month</span> in your inbox.
+        </h2>
+        <p class="lead" style="margin-left:auto; margin-right:auto;">
+          No spam, no newsletter platitudes. One actual essay or case
+          study a month, written by someone who walks Ontario rows.
+        </p>
+        <form class="cta-form" style="max-width: 500px; margin: 40px auto 0;" onsubmit="event.preventDefault(); this.querySelector('.form-ok').style.display='flex';">
+          <label>
+            <span>Email</span>
+            <input type="email" required placeholder="you@vineyard.ca" />
+          </label>
+          <button type="submit" class="btn btn-primary wide magnetic" data-hover>
+            <span>Subscribe</span>
+            <span class="cta-arrow">→</span>
+          </button>
+          <div class="form-ok">
+            <span class="pulse-dot green"></span>
+            Subscribed. First note arrives in a few days.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+          </div>
+          <p class="muted">Hyperspectral intelligence for Ontario vineyards. Built in wine country.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="insights.html">Field Notes</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Technology</h4>
+            <a href="technology.html">Hyperspectral</a>
+            <a href="solutions.html">Detection models</a>
+            <a href="technology.html#pipeline">Pipeline</a>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <a href="#">LinkedIn</a>
+            <a href="#">X / Twitter</a>
+            <a href="mailto:hello@spectralinsight.ai">hello@spectralinsight.ai</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Spectral Insight · Ontario, Canada</span>
+        <span class="mono">47.2574°N · 79.0668°W</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

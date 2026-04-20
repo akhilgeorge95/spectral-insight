@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spectral Insight — Seeing What Vines Cannot Say</title>
+  <meta name="description" content="Hyperspectral satellite intelligence for Ontario vineyards. Detect stress, disease, and water issues weeks before visible symptoms." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-orbit"></div>
+    <div class="loader-progress"></div>
+    <div class="loader-label">INITIALIZING · ACQUISITION CHANNEL</div>
+  </div>
+
+  <!-- CURSOR -->
+  <div class="cursor"></div>
+  <div class="cursor-follow"></div>
+
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- AMBIENT -->
+  <canvas class="starfield" id="starfield"></canvas>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" data-hover>
+        <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+      </a>
+      <nav class="nav-links">
+        <a href="technology.html" data-hover>Technology</a>
+        <a href="solutions.html" data-hover>Solutions</a>
+        <a href="about.html" data-hover>About</a>
+        <a href="insights.html" data-hover>Field Notes</a>
+        <a href="contact.html" data-hover>Contact</a>
+      </nav>
+      <a href="contact.html" class="cta-pill" data-hover>
+        <span>Request Analysis</span>
+        <span class="cta-arrow">→</span>
+      </a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="technology.html">Technology</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="insights.html">Field Notes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1614728263952-84ea256f9679?w=2400&q=85" alt="" class="hero-img" />
+      <div class="hero-gradient"></div>
+    </div>
+
+    <div class="orbit" aria-hidden="true">
+      <div class="orbit-ring r1"></div>
+      <div class="orbit-ring r2"></div>
+      <div class="orbit-ring r3"></div>
+      <div class="satellite">
+        <svg viewBox="0 0 24 24" width="22" height="22">
+          <rect x="9" y="9" width="6" height="6" fill="#c9f0ff"/>
+          <rect x="1" y="10" width="7" height="4" fill="#7fb8d6"/>
+          <rect x="16" y="10" width="7" height="4" fill="#7fb8d6"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="pulse-dot"></span>
+        HYPERSPECTRAL · ONTARIO · 2026 SEASON LIVE
+      </div>
+
+      <h1 class="hero-title split-reveal">
+        <span class="word"><span>Seeing</span></span>
+        <span class="word"><span>what</span></span><br>
+        <span class="word"><span class="gradient-text">vines</span></span>
+        <span class="word"><span class="gradient-text">cannot</span></span>
+        <span class="word"><span class="gradient-text">say.</span></span>
+      </h1>
+
+      <p class="hero-sub">
+        We translate orbital hyperspectral imagery into plain-language
+        vineyard decisions — detecting virus, water stress, and nutrient
+        deficiency weeks before the eye ever could.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="contact.html" class="btn btn-primary magnetic" data-hover>
+          <span>Request an analysis</span>
+          <span class="cta-arrow">→</span>
+        </a>
+        <a href="technology.html" class="btn btn-ghost magnetic" data-hover>
+          <span>How it works</span>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num" data-count="250">0</div>
+          <div class="stat-label">Spectral bands captured</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">~3&nbsp;wk</div>
+          <div class="stat-label">Early-warning horizon</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5&nbsp;m</div>
+          <div class="stat-label">Per-pixel resolution</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <section class="strip">
+    <div class="strip-track">
+      <span>◆ 2026 SEASON DATA ACQUISITION ACTIVE</span>
+      <span>◆ NIAGARA · PRINCE EDWARD COUNTY · LAKE ERIE NORTH SHORE</span>
+      <span>◆ NEW: LEAFROLL VIRUS EARLY-DETECTION MODEL v2.1</span>
+      <span>◆ REPORTS DELIVERED MONTHLY</span>
+      <span>◆ 2026 SEASON DATA ACQUISITION ACTIVE</span>
+      <span>◆ NIAGARA · PRINCE EDWARD COUNTY · LAKE ERIE NORTH SHORE</span>
+      <span>◆ NEW: LEAFROLL VIRUS EARLY-DETECTION MODEL v2.1</span>
+      <span>◆ REPORTS DELIVERED MONTHLY</span>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="mission">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        01 · MISSION
+      </div>
+
+      <div class="mission-grid">
+        <div class="mission-copy">
+          <h2 class="h-big">
+            A vineyard is a <span class="italic gradient-text-warm">living spectrum.</span>
+            We learned to read it from orbit.
+          </h2>
+          <p class="lead">
+            Every leaf reflects light in hundreds of distinct wavelengths —
+            a fingerprint of water, chlorophyll, and cellular health. Long
+            before stress becomes visible to a walking scout, it shows up
+            in that fingerprint.
+          </p>
+          <p class="lead">
+            Spectral Insight is a small team, locally rooted in Ontario wine
+            country, turning that orbital signal into a report you can read
+            over morning coffee.
+          </p>
+          <a href="about.html" class="sol-link" data-hover>Read our story <span>→</span></a>
+        </div>
+
+        <div class="mission-visual">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=85" alt="Earth from orbit" />
+          <div class="mission-visual-frame"></div>
+          <div class="scan-line"></div>
+          <div class="tick tick-tl">47.2°N</div>
+          <div class="tick tick-tr">79.1°W</div>
+          <div class="tick tick-bl">ACQ · 03:42 UTC</div>
+          <div class="tick tick-br">PASS 0421</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH -->
+  <section class="tech">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        02 · TECHNOLOGY
+      </div>
+
+      <h2 class="h-big">
+        Two hundred and fifty <span class="gradient-text">narrow bands</span>
+        of light. One decision per block.
+      </h2>
+
+      <div class="spectrum-vis" aria-hidden="true">
+        <div class="spectrum-band"></div>
+        <div class="spectrum-marker m1"><span>450nm</span></div>
+        <div class="spectrum-marker m2"><span>680nm · CHL</span></div>
+        <div class="spectrum-marker m3"><span>970nm · H₂O</span></div>
+        <div class="spectrum-marker m4"><span>1450nm</span></div>
+        <div class="spectrum-marker m5"><span>2200nm · SWIR</span></div>
+      </div>
+
+      <div class="tech-grid">
+        <article class="tech-card" data-hover>
+          <div class="tech-num">I</div>
+          <h3>Hyperspectral Capture</h3>
+          <p>Partnered satellite constellations image your blocks across 250+ narrow spectral bands — twenty times the resolution of conventional multispectral.</p>
+        </article>
+        <article class="tech-card" data-hover>
+          <div class="tech-num">II</div>
+          <h3>Vine-Trained Models</h3>
+          <p>Our models are fine-tuned on Vitis vinifera in cool-climate conditions, not generic row crops. They see grape biology, not corn.</p>
+        </article>
+        <article class="tech-card" data-hover>
+          <div class="tech-num">III</div>
+          <h3>Plain-Language Reports</h3>
+          <p>No raw TIFFs, no arcane indices. A map, a short written brief, three things to look at this week. Delivered by email.</p>
+        </article>
+      </div>
+
+      <div style="margin-top: 60px; text-align:center;">
+        <a href="technology.html" class="btn btn-ghost magnetic" data-hover>
+          <span>Full technology deep-dive</span>
+          <span class="cta-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section class="solutions">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        03 · WHAT WE DETECT
+      </div>
+
+      <h2 class="h-big">
+        Five early signals, <span class="gradient-text-warm">one page.</span>
+      </h2>
+
+      <div class="sol-grid">
+        <a class="sol-card" href="solutions.html#virology" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=900&q=80');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">VIROLOGY</div>
+            <h3>Leafroll &amp; Red Blotch</h3>
+            <p>Asymptomatic vines shedding chlorophyll signatures before a scout sees color change.</p>
+            <div class="sol-link">Detection model <span>→</span></div>
+          </div>
+        </a>
+
+        <a class="sol-card" href="solutions.html#hydrology" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=900&q=80');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">HYDROLOGY</div>
+            <h3>Water Stress Mapping</h3>
+            <p>Per-block water status from SWIR bands — irrigate where it matters, not on a schedule.</p>
+            <div class="sol-link">Detection model <span>→</span></div>
+          </div>
+        </a>
+
+        <a class="sol-card" href="solutions.html#nutrition" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1560493676-04071c5f467b?w=900&q=80');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">NUTRITION</div>
+            <h3>Nutrient Deficiency</h3>
+            <p>Nitrogen, potassium, magnesium anomalies resolved to the panel, not the acre.</p>
+            <div class="sol-link">Detection model <span>→</span></div>
+          </div>
+        </a>
+
+        <a class="sol-card" href="solutions.html#canopy" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=900&q=80');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">CANOPY</div>
+            <h3>Vigor &amp; Uniformity</h3>
+            <p>Block-level vigor maps that reveal management zones hidden inside what looks like one vineyard.</p>
+            <div class="sol-link">Detection model <span>→</span></div>
+          </div>
+        </a>
+
+        <a class="sol-card" href="solutions.html#phenology" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=900&q=80');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">PHENOLOGY</div>
+            <h3>Season Tracking</h3>
+            <p>Bud break to veraison, tracked as a signature curve and compared to your own five-year baseline.</p>
+            <div class="sol-link">Detection model <span>→</span></div>
+          </div>
+        </a>
+
+        <a class="sol-card" href="solutions.html#climate" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?w=900&q=80');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">CLIMATE</div>
+            <h3>Frost &amp; Heat Risk</h3>
+            <p>Micro-site exposure ranked against your own topography and Ontario climate history.</p>
+            <div class="sol-link">Detection model <span>→</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        04 · PROCESS
+      </div>
+      <h2 class="h-big">
+        From <span class="gradient-text">orbit</span> to <span class="gradient-text-warm">inbox</span>
+        in four moves.
+      </h2>
+
+      <ol class="steps">
+        <li>
+          <div class="step-num">01</div>
+          <h3>Draw your blocks</h3>
+          <p>A single onboarding call. We map your property once — you never do GIS.</p>
+        </li>
+        <li>
+          <div class="step-num">02</div>
+          <h3>We image, every pass</h3>
+          <p>Our satellites revisit Ontario wine country on a tight cadence through the growing season.</p>
+        </li>
+        <li>
+          <div class="step-num">03</div>
+          <h3>Models &amp; humans</h3>
+          <p>Vine-trained models flag anomalies. A human reads each report before it leaves our hands.</p>
+        </li>
+        <li>
+          <div class="step-num">04</div>
+          <h3>You get a brief</h3>
+          <p>A short, map-driven email — the three things to walk out and look at this week.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- INSIGHTS -->
+  <section class="insights">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        05 · FIELD NOTES
+      </div>
+      <h2 class="h-big">From the field.</h2>
+
+      <div class="insight-grid">
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?w=900&q=80" alt="" />
+          <div class="insight-meta">ESSAY · 6 MIN</div>
+          <h3>What a Niagara Cabernet Franc block reveals at 970 nanometers.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80" alt="" />
+          <div class="insight-meta">CASE · 4 MIN</div>
+          <h3>Catching leafroll three weeks before a scout could.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+        <a href="article.html" class="insight-card" data-hover>
+          <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=80" alt="" />
+          <div class="insight-meta">NOTE · 3 MIN</div>
+          <h3>Why hyperspectral is not just multispectral with more pixels.</h3>
+          <div class="sol-link" style="margin: 0 24px 24px;">Read <span>→</span></div>
+        </a>
+      </div>
+      <div style="margin-top: 60px; text-align:center;">
+        <a href="insights.html" class="btn btn-ghost magnetic" data-hover>
+          <span>All field notes</span>
+          <span class="cta-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final" id="contact">
+    <div class="container">
+      <div class="cta-grid">
+        <div>
+          <div class="section-label light">
+            <span class="label-bar"></span>
+            SAY HELLO
+          </div>
+          <h2 class="h-big">
+            Tell us about your <span class="italic gradient-text-warm">vineyard.</span>
+          </h2>
+          <p class="lead">
+            One call. Fifteen minutes. We'll tell you honestly whether
+            what we do is worth your season — and if so, what the first
+            report will look like.
+          </p>
+          <p class="lead muted">
+            A small team that actually picks up the phone.
+          </p>
+        </div>
+
+        <form class="cta-form" onsubmit="event.preventDefault(); this.querySelector('.form-ok').style.display='flex';">
+          <label>
+            <span>Your name</span>
+            <input type="text" required placeholder="Jane Grower" />
+          </label>
+          <label>
+            <span>Vineyard &amp; region</span>
+            <input type="text" required placeholder="Beamsville Bench · 14 ha" />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" required placeholder="jane@vineyard.ca" />
+          </label>
+          <label>
+            <span>What's on your mind?</span>
+            <textarea rows="3" placeholder="We had patchy vigor last year in block 3..."></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary wide magnetic" data-hover>
+            <span>Send request</span>
+            <span class="cta-arrow">→</span>
+          </button>
+          <div class="form-ok">
+            <span class="pulse-dot green"></span>
+            Request received. We'll be in touch within two business days.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+          </div>
+          <p class="muted">Hyperspectral intelligence for Ontario vineyards. Built in wine country.</p>
+        </div>
+
+        <div class="footer-cols">
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="insights.html">Field Notes</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Technology</h4>
+            <a href="technology.html">Hyperspectral</a>
+            <a href="solutions.html">Detection models</a>
+            <a href="technology.html#process">Process</a>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <a href="#">LinkedIn</a>
+            <a href="#">X / Twitter</a>
+            <a href="mailto:hello@spectralinsight.ai">hello@spectralinsight.ai</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Spectral Insight · Ontario, Canada</span>
+        <span class="mono">47.2574°N · 79.0668°W</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
