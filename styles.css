@@ -2704,3 +2704,121 @@ button { font: inherit; cursor: none; border: none; background: none; color: inh
   font-size: 15px;
   max-width: 72ch;
 }
+
+/* ============================================================
+   SOLUTION DETAIL — PAGER + CROSS-NAV
+   ============================================================ */
+.sol-pager-sec {
+  position: relative; z-index: 3;
+  padding: 100px 0 20px;
+  border-top: 1px solid var(--line);
+}
+
+.sol-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+@media (max-width: 900px) {
+  .sol-pager { grid-template-columns: 1fr; }
+}
+
+.sol-pager-link {
+  display: flex; align-items: center; gap: 20px;
+  padding: 24px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg-2);
+  transition: all .4s var(--ease-out);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+.sol-pager-link::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(122,92,255,0.08), transparent);
+  opacity: 0;
+  transition: opacity .4s;
+}
+.sol-pager-link:hover {
+  border-color: var(--line-2);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,0.6);
+}
+.sol-pager-link:hover::before { opacity: 1; }
+
+.sol-pager-link.next { justify-content: flex-end; text-align: right; }
+.sol-pager-link.all  { justify-content: center; text-align: center;
+  background: linear-gradient(180deg, rgba(122,92,255,0.1), rgba(53,195,255,0.05));
+  border-color: var(--line-2);
+}
+
+.sol-pager-arrow {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--acc-2);
+  transition: transform .4s var(--ease-out);
+  flex-shrink: 0;
+}
+.sol-pager-link.prev:hover .sol-pager-arrow { transform: translateX(-6px); }
+.sol-pager-link.next:hover .sol-pager-arrow { transform: translateX(6px); }
+
+.sol-pager-body {
+  display: flex; flex-direction: column; gap: 4px;
+  position: relative; z-index: 1;
+}
+.sol-pager-body.right { align-items: flex-end; }
+.sol-pager-body.center { align-items: center; }
+
+.sol-pager-kicker {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+}
+.sol-pager-link:hover .sol-pager-kicker { color: var(--acc-2); }
+
+.sol-pager-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  transition: color .3s;
+}
+.sol-pager-link.all .sol-pager-title { color: var(--acc-2); }
+.sol-pager-link:hover .sol-pager-title { color: var(--acc-3); }
+
+/* Header row for the other-detection-models section */
+.sol-others-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.sol-others-head .section-label { margin-bottom: 0; }
+.sol-others-all {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--acc-2);
+  padding: 10px 18px;
+  border: 1px solid var(--line-2);
+  border-radius: 100px;
+  transition: all .3s ease;
+  text-transform: uppercase;
+  background: rgba(53,195,255,0.04);
+}
+.sol-others-all span { transition: transform .3s; }
+.sol-others-all:hover {
+  border-color: var(--acc-2);
+  background: rgba(53,195,255,0.15);
+}
+.sol-others-all:hover span { transform: translateX(4px); }
