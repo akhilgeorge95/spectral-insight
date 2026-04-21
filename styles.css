@@ -2520,3 +2520,187 @@ button { font: inherit; cursor: none; border: none; background: none; color: inh
   margin-top: 10px;
   line-height: 1.4;
 }
+
+/* ============================================================
+   PHASE 3 — SOLUTION DETAIL PAGES
+   ============================================================ */
+
+/* Clickable detect-row (anchor replacing div on solutions.html) */
+.detect-row-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: none;
+  position: relative;
+}
+.detect-row-link::after {
+  content: 'View detail →';
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--acc-2);
+  opacity: 0;
+  transition: opacity .3s, transform .3s;
+  transform: translateX(-6px);
+  text-transform: uppercase;
+}
+.detect-row-link:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+.detect-row-link:hover .detect-body h3 {
+  color: var(--acc-3);
+}
+.detect-row-link .detect-body h3 { transition: color .3s; }
+
+/* Solution detail page header tag */
+.sol-detail-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--acc-2);
+  padding: 6px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 100px;
+  margin-bottom: 24px;
+  background: rgba(53,195,255,0.06);
+}
+
+/* Band-table specific on solution detail */
+.sol-band-table {
+  margin-top: 40px;
+}
+.sol-band-table td:first-child,
+.sol-band-table td.mono {
+  font-family: var(--font-mono);
+  color: var(--acc-2);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+.sol-band-table td:nth-child(2) {
+  font-family: var(--font-mono);
+  color: var(--ink);
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.sol-band-table td:last-child {
+  font-family: var(--font-body);
+  color: var(--ink-2);
+  font-size: 14px;
+  letter-spacing: 0;
+  max-width: 420px;
+}
+
+/* Stats grid on detail pages */
+.sol-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+@media (max-width: 900px) { .sol-stats-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .sol-stats-grid { grid-template-columns: 1fr; } }
+
+.sol-stats-grid .stat {
+  padding: 24px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  transition: all .3s;
+}
+.sol-stats-grid .stat:hover {
+  border-color: var(--line-2);
+  transform: translateY(-2px);
+  background: rgba(122,92,255,0.06);
+}
+.sol-stats-grid .stat-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--acc-2);
+  margin-bottom: 8px;
+}
+.sol-stats-grid .stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.sol-stats-grid .stat-sub {
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+
+/* Report list (detail pages) */
+.report-list {
+  list-style: none;
+  margin-top: 40px;
+  display: grid;
+  gap: 14px;
+  max-width: 70ch;
+}
+.report-list li {
+  padding: 18px 22px 18px 50px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  font-size: 16px;
+  color: var(--ink);
+  position: relative;
+  transition: all .3s;
+}
+.report-list li::before {
+  content: '';
+  position: absolute;
+  left: 22px; top: 50%;
+  width: 10px; height: 10px;
+  margin-top: -5px;
+  border: 1px solid var(--acc-2);
+  border-radius: 50%;
+  background: rgba(53,195,255,0.15);
+  box-shadow: 0 0 8px rgba(53,195,255,0.4);
+}
+.report-list li:hover {
+  border-color: var(--line-2);
+  transform: translateX(4px);
+  background: rgba(53,195,255,0.04);
+}
+
+/* Limits list (detail pages) */
+.limits-list {
+  list-style: none;
+  margin-top: 40px;
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.limits-list li {
+  padding: 28px 32px;
+  background: var(--bg);
+  transition: background .3s;
+}
+.limits-list li:hover { background: var(--bg-2); }
+.limits-list h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.limits-list p {
+  color: var(--ink-2);
+  font-size: 15px;
+  max-width: 72ch;
+}

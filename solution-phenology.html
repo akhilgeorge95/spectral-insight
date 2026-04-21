@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Season Tracking — Spectral Insight</title>
+  <meta name="description" content="Your block has its own seasonal signature — a shape that repeats. Divergence from that shape is where the interesting information lives." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-orbit"></div>
+    <div class="loader-progress"></div>
+    <div class="loader-label">LOADING · PHENOLOGY DETAIL</div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-follow"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <canvas class="starfield" id="starfield"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+  <div class="aurora-bottom"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" data-hover>
+        <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+      </a>
+      <nav class="nav-links">
+        <a href="technology.html" data-hover>Technology</a>
+        <a href="solutions.html" class="active" data-hover>Solutions</a>
+        <a href="about.html" data-hover>About</a>
+        <a href="insights.html" data-hover>Field Notes</a>
+        <a href="contact.html" data-hover>Contact</a>
+      </nav>
+      <a href="contact.html" class="cta-pill" data-hover>
+        <span>Request Analysis</span>
+        <span class="cta-arrow">→</span>
+      </a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="technology.html">Technology</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="insights.html">Field Notes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-bg">
+      <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=2400&q=85" alt="" />
+    </div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Spectral Insight</a>
+        <span class="sep">/</span>
+        <a href="solutions.html">Solutions</a>
+        <span class="sep">/</span>
+        <span>Season Tracking</span>
+      </div>
+      <div class="sol-detail-tag">PHENOLOGY · DETECTION MODEL</div>
+      <h1 class="page-title">A curve for your block. <span class="gradient-text">A five-year baseline.</span></h1>
+      <p class="page-subtitle">Your block has its own seasonal signature — a shape that repeats. Divergence from that shape is where the interesting information lives.</p>
+    </div>
+  </section>
+
+  <!-- 01 THE SIGNAL -->
+  <section class="tech-section" id="signal">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        01 · THE SIGNAL
+      </div>
+      <h2 class="h-big">The reflectance curve <span class="gradient-text-warm">changes shape with the season.</span></h2>
+      <p class="lead">In April, a vineyard block's reflectance curve is flat — just bare soil and trellis. By mid-June, as the canopy closes, NIR reflectance climbs and the red-edge sharpens. Through July and August, the curve hits its highest-NIR, deepest-chlorophyll shape. By veraison, subtle shifts show up in the 1450 nm water region. By leaf-fall, the curve collapses back toward soil.</p>
+      <p class="lead">Every block has its own version of this annual shape. Slightly earlier here, slightly later there, slightly taller here, slightly flatter there. After five years, you have a reliable baseline. After that, divergence from the baseline is your alarm.</p>
+
+      <table class="spec-table sol-band-table">
+        <tr><th>Band</th><th>Role</th><th>What it reveals</th></tr>
+        <tr>
+          <td class="mono">550 nm</td>
+          <td>GREEN PEAK HEIGHT</td>
+          <td>Tracks canopy greenness development.</td>
+        </tr>
+        <tr>
+          <td class="mono">720 nm</td>
+          <td>RED EDGE TIMING</td>
+          <td>Inflection-point seasonal movement.</td>
+        </tr>
+        <tr>
+          <td class="mono">850 nm</td>
+          <td>NIR PLATEAU HEIGHT</td>
+          <td>Biomass development over time.</td>
+        </tr>
+        <tr>
+          <td class="mono">970/1450</td>
+          <td>WATER SIGNATURE</td>
+          <td>Veraison-phase water-content changes.</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 02 THE MODEL -->
+  <section class="tech-section" id="model">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        02 · THE MODEL
+      </div>
+      <h2 class="h-big">A curve fit. <span class="gradient-text">A divergence alert.</span></h2>
+      <p class="lead">We fit a parametric curve to each block's seasonal NDVI-plus-water signature. The curve has parameters like 'bud-break start date', 'peak canopy NIR', 'veraison water shift', 'leaf-fall midpoint'. These are the parameters of your block.</p>
+      <p class="lead">Each new season, we fit fresh curves and compute the distance from the five-year rolling average. Small divergences stay within a tolerance band. Large divergences — a block running 8 days ahead, or hitting peak NIR 15% lower than usual — get flagged in the monthly brief with suggested explanations.</p>
+      <p class="lead">This is the detection model that gets more useful every year you're a client. Year one we build the baseline. Year two we start alerting.</p>
+    </div>
+  </section>
+
+  <!-- 03 SPECS -->
+  <section class="tech-section" id="specs">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        03 · SPECS
+      </div>
+      <div class="sol-stats-grid">
+        <div class="stat">
+          <div class="stat-num">5-year</div>
+          <div class="stat-label">ROLLING BASELINE</div>
+          <div class="stat-sub">Our preferred history window</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Δ-flag</div>
+          <div class="stat-label">OUTPUT</div>
+          <div class="stat-sub">Per-parameter divergence alerts</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Per block</div>
+          <div class="stat-label">CURVE TRACKED</div>
+          <div class="stat-sub">Not per-property averaging</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">E-L stage</div>
+          <div class="stat-label">CORRELATION</div>
+          <div class="stat-sub">Calibrated to physiological stages</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 CASE -->
+  <section class="tech-section" id="case">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        04 · A REAL CASE
+      </div>
+      <h2 class="h-big">Veraison, <span class="gradient-text-warm">six days early.</span></h2>
+      <p class="lead">In August 2024, a PEC property's two largest blocks showed phenology running 6 days ahead of their five-year baseline. Heat accumulation had been up through July, so that wasn't surprising on its own.</p>
+      <p class="lead">What was surprising: only those two blocks. A neighbouring block on the same property, same variety, was running bang-on baseline. The divergence was real, and local.</p>
+      <p class="lead">The harvest team brought their pick timing forward by four days for those two blocks specifically and left the third on its usual schedule. Titratable acidity at pick came in at target across all three blocks — which, when you're running tight on bottling dates, is exactly the win.</p>
+    </div>
+  </section>
+
+  <!-- 05 REPORT -->
+  <section class="tech-section" id="report">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        05 · IN YOUR MONTHLY BRIEF
+      </div>
+      <h2 class="h-big">What you'll actually see.</h2>
+      <ul class="report-list">
+        <li>Phenology curve with current season overlaid on five-year baseline</li>
+          <li>Per-parameter divergence flags (bud-break, peak canopy, veraison, leaf-fall)</li>
+          <li>Correlation with local GDD (growing degree days) data</li>
+          <li>Suggested harvest-timing adjustments where divergence is large</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 06 LIMITS -->
+  <section class="tech-section" id="limits">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        06 · LIMITS
+      </div>
+      <h2 class="h-big">What year-one clients should know.</h2>
+      <ul class="limits-list">
+        <li>
+          <h4>Baseline-first year.</h4>
+          <p>Year 1 of data is entry. Year 2 is comparison but noisy. Year 5+ is where the alerts become high-confidence. Be patient.</p>
+        </li>
+        <li>
+          <h4>Replants reset the clock.</h4>
+          <p>If you replant a block mid-history, that block's baseline resets. We track the change explicitly but the divergence signal takes 2–3 years to re-stabilize.</p>
+        </li>
+        <li>
+          <h4>Unusually cold springs.</h4>
+          <p>A cold spring (e.g. 2023) will shift the entire baseline in the same direction across most blocks. The model handles this, but individual-block divergence in such years is hard to interpret.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OTHER SOLUTIONS -->
+  <section class="tech-section" style="border-top: 1px solid var(--line);">
+    <div class="container">
+      <div class="section-label"><span class="label-bar"></span>OTHER DETECTION MODELS</div>
+      <div class="sol-grid">
+        <a class="sol-card" href="solution-virology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">VIROLOGY</div>
+            <h3>Leafroll & Red Blotch</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-hydrology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">HYDROLOGY</div>
+            <h3>Water Stress Mapping</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-nutrition.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1560493676-04071c5f467b?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">NUTRITION</div>
+            <h3>Nutrient Deficiency</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-canopy.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">CANOPY</div>
+            <h3>Vigor & Uniformity</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-climate.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">CLIMATE</div>
+            <h3>Frost & Heat Risk</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <div class="container">
+      <div style="max-width: 700px; text-align:center; margin: 0 auto;">
+        <h2 class="h-big">
+          See this model run on your <span class="gradient-text-warm">own blocks.</span>
+        </h2>
+        <p class="lead" style="margin-left:auto; margin-right:auto;">
+          Share a boundary and we'll deliver a one-off sample report with
+          this detection model applied to your property. No commitment.
+        </p>
+        <div style="margin-top: 40px;">
+          <a href="contact.html" class="btn btn-primary magnetic" data-hover>
+            <span>Request a sample</span>
+            <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+          </div>
+          <p class="muted">Hyperspectral intelligence for Ontario vineyards. Built in wine country.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="insights.html">Field Notes</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Technology</h4>
+            <a href="technology.html">Hyperspectral</a>
+            <a href="solutions.html">Detection models</a>
+            <a href="technology.html#pipeline">Pipeline</a>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <a href="#">LinkedIn</a>
+            <a href="#">X / Twitter</a>
+            <a href="mailto:hello@spectralinsight.ai">hello@spectralinsight.ai</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Spectral Insight · Ontario, Canada</span>
+        <span class="mono">47.2574°N · 79.0668°W</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frost & Heat Risk — Spectral Insight</title>
+  <meta name="description" content="This one isn't purely spectral. It's your elevation, aspect, and slope — extracted from the satellite stack — ranked against Ontario's climate record." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-orbit"></div>
+    <div class="loader-progress"></div>
+    <div class="loader-label">LOADING · CLIMATE DETAIL</div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-follow"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <canvas class="starfield" id="starfield"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+  <div class="aurora-bottom"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" data-hover>
+        <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+      </a>
+      <nav class="nav-links">
+        <a href="technology.html" data-hover>Technology</a>
+        <a href="solutions.html" class="active" data-hover>Solutions</a>
+        <a href="about.html" data-hover>About</a>
+        <a href="insights.html" data-hover>Field Notes</a>
+        <a href="contact.html" data-hover>Contact</a>
+      </nav>
+      <a href="contact.html" class="cta-pill" data-hover>
+        <span>Request Analysis</span>
+        <span class="cta-arrow">→</span>
+      </a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="technology.html">Technology</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="insights.html">Field Notes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-bg">
+      <img src="https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?w=2400&q=85" alt="" />
+    </div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Spectral Insight</a>
+        <span class="sep">/</span>
+        <a href="solutions.html">Solutions</a>
+        <span class="sep">/</span>
+        <span>Frost & Heat Risk</span>
+      </div>
+      <div class="sol-detail-tag">CLIMATE · DETECTION MODEL</div>
+      <h1 class="page-title">Your topography, versus <span class="gradient-text-warm">thirty years</span> of Ontario weather.</h1>
+      <p class="page-subtitle">This one isn't purely spectral. It's your elevation, aspect, and slope — extracted from the satellite stack — ranked against Ontario's climate record.</p>
+    </div>
+  </section>
+
+  <!-- 01 THE SIGNAL -->
+  <section class="tech-section" id="signal">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        01 · THE SIGNAL
+      </div>
+      <h2 class="h-big">Not every risk is <span class="gradient-text">in a reflectance curve.</span></h2>
+      <p class="lead">Some of the most important vineyard decisions — which blocks to protect from frost, which to prioritize for heat-spike irrigation, which to consider replanting — depend on topography, not spectral chemistry. Micro-site elevation, slope aspect, cold-air drainage pathways, exposure to prevailing wind.</p>
+      <p class="lead">We extract all of these from the satellite stack (which includes stereo-derived digital elevation) and score them against Ontario's 30-year climate record. The output is a forward-looking risk exposure rating per block, not a current-day detection. Useful at the season-planning scale, not the week-to-week scale.</p>
+
+      <table class="spec-table sol-band-table">
+        <tr><th>Band</th><th>Role</th><th>What it reveals</th></tr>
+        <tr>
+          <td class="mono">Elevation</td>
+          <td>TOPOGRAPHIC</td>
+          <td>Derived from stereo satellite pairs.</td>
+        </tr>
+        <tr>
+          <td class="mono">Aspect</td>
+          <td>SLOPE DIRECTION</td>
+          <td>North vs. south vs. east exposure.</td>
+        </tr>
+        <tr>
+          <td class="mono">Slope %</td>
+          <td>GRADIENT</td>
+          <td>Cold-air drainage pathways.</td>
+        </tr>
+        <tr>
+          <td class="mono">Climate record</td>
+          <td>30-YR BASELINE</td>
+          <td>Environment Canada station network.</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 02 THE MODEL -->
+  <section class="tech-section" id="model">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        02 · THE MODEL
+      </div>
+      <h2 class="h-big">Site vulnerability, <span class="gradient-text">ranked.</span></h2>
+      <p class="lead">For each block, we compute a Late Frost Exposure Index, a Heat Spike Vulnerability Index, and a Wind Exposure rating. Each is scored against the climate record for the nearest three stations to your property, weighted by distance.</p>
+      <p class="lead">The output is a site-comparative ranking — not an absolute risk number, but 'block A is 2.3× more exposed than block C at this property.' That relative framing is what actually makes the protection decision tractable.</p>
+      <p class="lead">Used mostly at planning time: which blocks to site frost fans, which blocks to insure, which expansion parcels have hidden frost pockets.</p>
+    </div>
+  </section>
+
+  <!-- 03 SPECS -->
+  <section class="tech-section" id="specs">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        03 · SPECS
+      </div>
+      <div class="sol-stats-grid">
+        <div class="stat">
+          <div class="stat-num">Block-level</div>
+          <div class="stat-label">RISK SCORE</div>
+          <div class="stat-sub">Comparative within your property</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">30 yr</div>
+          <div class="stat-label">CLIMATE BASELINE</div>
+          <div class="stat-sub">Environment Canada station network</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Topo-aware</div>
+          <div class="stat-label">ASPECT + ELEVATION</div>
+          <div class="stat-sub">From satellite-derived DEM</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Annual</div>
+          <div class="stat-label">REFRESH</div>
+          <div class="stat-sub">Delivered once per year, pre-season</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 CASE -->
+  <section class="tech-section" id="case">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        04 · A REAL CASE
+      </div>
+      <h2 class="h-big">A hidden frost pocket, <span class="gradient-text-warm">pre-plant.</span></h2>
+      <p class="lead">A grower was considering a 6-hectare expansion parcel adjacent to their current property. It looked, visually, identical — same slope direction, same vegetation, same elevation on Google Earth.</p>
+      <p class="lead">Our exposure model showed it was in a subtle cold-air drainage path that ran through the existing neighbouring woodlot. The modelled late-frost risk on that parcel was 2.8× the highest-risk block on their current property.</p>
+      <p class="lead">They renegotiated the purchase price, and planted their most late-frost-hardy variety (Vidal Blanc) on that parcel instead of the originally planned Cabernet Franc. Four years in, they've dodged two frost events the rest of the region felt.</p>
+    </div>
+  </section>
+
+  <!-- 05 REPORT -->
+  <section class="tech-section" id="report">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        05 · IN YOUR MONTHLY BRIEF
+      </div>
+      <h2 class="h-big">What you'll actually see.</h2>
+      <ul class="report-list">
+        <li>Late-frost exposure rating per block and per expansion parcel</li>
+          <li>Heat-spike vulnerability ranking</li>
+          <li>Aspect map with cold-air drainage overlays</li>
+          <li>Suggested variety-by-block recommendations for high-risk sites</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 06 LIMITS -->
+  <section class="tech-section" id="limits">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        06 · LIMITS
+      </div>
+      <h2 class="h-big">Planning, not forecasting.</h2>
+      <ul class="limits-list">
+        <li>
+          <h4>Not a weather forecast.</h4>
+          <p>This is exposure, not prediction. A high-exposure block can go a decade without an event; a low-exposure block can be hit in a 1-in-30-year year.</p>
+        </li>
+        <li>
+          <h4>Requires adjacent data.</h4>
+          <p>In areas more than 25 km from a climate station, the baseline gets noisy. Fortunately, all three Ontario DVAs are well covered.</p>
+        </li>
+        <li>
+          <h4>Doesn't capture canopy-height effects.</h4>
+          <p>Vineyard frost protection is also a function of trellis height and canopy management; those aren't in the topographic model and need to be judged separately.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OTHER SOLUTIONS -->
+  <section class="tech-section" style="border-top: 1px solid var(--line);">
+    <div class="container">
+      <div class="section-label"><span class="label-bar"></span>OTHER DETECTION MODELS</div>
+      <div class="sol-grid">
+        <a class="sol-card" href="solution-virology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">VIROLOGY</div>
+            <h3>Leafroll & Red Blotch</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-hydrology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">HYDROLOGY</div>
+            <h3>Water Stress Mapping</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-nutrition.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1560493676-04071c5f467b?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">NUTRITION</div>
+            <h3>Nutrient Deficiency</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-canopy.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">CANOPY</div>
+            <h3>Vigor & Uniformity</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-phenology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">PHENOLOGY</div>
+            <h3>Season Tracking</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <div class="container">
+      <div style="max-width: 700px; text-align:center; margin: 0 auto;">
+        <h2 class="h-big">
+          See this model run on your <span class="gradient-text-warm">own blocks.</span>
+        </h2>
+        <p class="lead" style="margin-left:auto; margin-right:auto;">
+          Share a boundary and we'll deliver a one-off sample report with
+          this detection model applied to your property. No commitment.
+        </p>
+        <div style="margin-top: 40px;">
+          <a href="contact.html" class="btn btn-primary magnetic" data-hover>
+            <span>Request a sample</span>
+            <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+          </div>
+          <p class="muted">Hyperspectral intelligence for Ontario vineyards. Built in wine country.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="insights.html">Field Notes</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Technology</h4>
+            <a href="technology.html">Hyperspectral</a>
+            <a href="solutions.html">Detection models</a>
+            <a href="technology.html#pipeline">Pipeline</a>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <a href="#">LinkedIn</a>
+            <a href="#">X / Twitter</a>
+            <a href="mailto:hello@spectralinsight.ai">hello@spectralinsight.ai</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Spectral Insight · Ontario, Canada</span>
+        <span class="mono">47.2574°N · 79.0668°W</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

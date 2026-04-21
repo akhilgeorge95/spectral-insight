@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nutrient Deficiency — Spectral Insight</title>
+  <meta name="description" content="Each nutrient leaves a distinct spectral fingerprint. Instead of blanket spraying, spray the panels that actually need it." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-orbit"></div>
+    <div class="loader-progress"></div>
+    <div class="loader-label">LOADING · NUTRITION DETAIL</div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-follow"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <canvas class="starfield" id="starfield"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+  <div class="aurora-bottom"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" data-hover>
+        <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+      </a>
+      <nav class="nav-links">
+        <a href="technology.html" data-hover>Technology</a>
+        <a href="solutions.html" class="active" data-hover>Solutions</a>
+        <a href="about.html" data-hover>About</a>
+        <a href="insights.html" data-hover>Field Notes</a>
+        <a href="contact.html" data-hover>Contact</a>
+      </nav>
+      <a href="contact.html" class="cta-pill" data-hover>
+        <span>Request Analysis</span>
+        <span class="cta-arrow">→</span>
+      </a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="technology.html">Technology</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="insights.html">Field Notes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-bg">
+      <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=2400&q=85" alt="" />
+    </div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Spectral Insight</a>
+        <span class="sep">/</span>
+        <a href="solutions.html">Solutions</a>
+        <span class="sep">/</span>
+        <span>Nutrient Deficiency</span>
+      </div>
+      <div class="sol-detail-tag">NUTRITION · DETECTION MODEL</div>
+      <h1 class="page-title">Nitrogen, potassium, magnesium — <span class="gradient-text">resolved.</span></h1>
+      <p class="page-subtitle">Each nutrient leaves a distinct spectral fingerprint. Instead of blanket spraying, spray the panels that actually need it.</p>
+    </div>
+  </section>
+
+  <!-- 01 THE SIGNAL -->
+  <section class="tech-section" id="signal">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        01 · THE SIGNAL
+      </div>
+      <h2 class="h-big">Pigment chemistry has <span class="gradient-text-warm">wavelength-specific</span> signatures.</h2>
+      <p class="lead">Nutrient deficiency manifests through pigment changes. Nitrogen deficiency reduces overall chlorophyll (drops the 550 nm green reflectance peak). Potassium deficiency shifts the red-edge inflection. Magnesium deficiency affects the 680 nm absorption depth in a specific, sub-band pattern.</p>
+      <p class="lead">A hyperspectral cube contains all of these simultaneously. The challenge isn't seeing the signal — it's disentangling which deficiency is causing which shift, since some of them overlap. That's what our element-specific regressors are built for.</p>
+
+      <table class="spec-table sol-band-table">
+        <tr><th>Band</th><th>Role</th><th>What it reveals</th></tr>
+        <tr>
+          <td class="mono">550 nm</td>
+          <td>GREEN PEAK</td>
+          <td>Chlorophyll a/b total concentration. Drops under N deficit.</td>
+        </tr>
+        <tr>
+          <td class="mono">680 nm</td>
+          <td>CHLOROPHYLL</td>
+          <td>Mg-specific sensitivity in trough shape.</td>
+        </tr>
+        <tr>
+          <td class="mono">720 nm</td>
+          <td>RED EDGE</td>
+          <td>Inflection point shifts under K deficit.</td>
+        </tr>
+        <tr>
+          <td class="mono">1510 nm</td>
+          <td>PROTEIN</td>
+          <td>N-bearing compound overtone. Rare but diagnostic.</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 02 THE MODEL -->
+  <section class="tech-section" id="model">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        02 · THE MODEL
+      </div>
+      <h2 class="h-big">Three models, <span class="gradient-text">one per element.</span></h2>
+      <p class="lead">We train a separate regressor for each of N, K, and Mg. Each is calibrated against petiole-test ground truth from 90+ Ontario blocks. Individual-element modeling is slightly less elegant than a unified classifier, but it produces cleaner per-nutrient anomaly maps.</p>
+      <p class="lead">The output is not a hard diagnosis — it's a ranked list of panels where a tissue test would most likely confirm an actionable deficiency. We pair this with your historical tissue data where you have it.</p>
+      <p class="lead">The point is to turn petiole sampling from a blanket 10-random-panels exercise into informed, targeted sampling.</p>
+    </div>
+  </section>
+
+  <!-- 03 SPECS -->
+  <section class="tech-section" id="specs">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        03 · SPECS
+      </div>
+      <div class="sol-stats-grid">
+        <div class="stat">
+          <div class="stat-num">N · K · Mg</div>
+          <div class="stat-label">ELEMENTS SCORED</div>
+          <div class="stat-sub">Primary Ontario concerns</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Panel-level</div>
+          <div class="stat-label">RESOLUTION</div>
+          <div class="stat-sub">Not per-block averaging</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Confirmatory</div>
+          <div class="stat-label">USE PATTERN</div>
+          <div class="stat-sub">Pairs with tissue tests, not replaces them</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">±12%</div>
+          <div class="stat-label">TYPICAL UNCERTAINTY</div>
+          <div class="stat-sub">vs. lab tissue analysis</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 CASE -->
+  <section class="tech-section" id="case">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        04 · A REAL CASE
+      </div>
+      <h2 class="h-big">A spray campaign that <span class="gradient-text-warm">was not needed.</span></h2>
+      <p class="lead">A 24-hectare PEC property was preparing a property-wide magnesium foliar spray in late July 2025 based on a handful of symptomatic vines in one corner. We had just delivered their July brief.</p>
+      <p class="lead">Our Mg deficiency map flagged 18 panels across two adjacent rows — all in that same corner, none elsewhere. The rest of the property read normal.</p>
+      <p class="lead">They switched to a targeted treatment of those 18 panels. Saved the cost and labour of 98% of the spray. The localized deficiency turned out to be a historical soil-amendment gap from a replant three years earlier.</p>
+    </div>
+  </section>
+
+  <!-- 05 REPORT -->
+  <section class="tech-section" id="report">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        05 · IN YOUR MONTHLY BRIEF
+      </div>
+      <h2 class="h-big">What you'll actually see.</h2>
+      <ul class="report-list">
+        <li>Per-element deficiency anomaly map (N, K, Mg)</li>
+          <li>Ranked list of panels most worth tissue-testing</li>
+          <li>Comparison against your historical petiole results</li>
+          <li>Spray-zone recommendations if confirmed</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 06 LIMITS -->
+  <section class="tech-section" id="limits">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        06 · LIMITS
+      </div>
+      <h2 class="h-big">Where the signal gets noisy.</h2>
+      <ul class="limits-list">
+        <li>
+          <h4>Iron and micronutrients.</h4>
+          <p>We don't currently score Fe, Zn, B, or Mn. Their spectral signatures are weaker and less studied for grapes specifically. 2026 road-map.</p>
+        </li>
+        <li>
+          <h4>Variety sensitivity.</h4>
+          <p>White varieties show weaker chlorophyll anomalies in general. Detection is slightly less sensitive on Riesling and Chardonnay blocks vs. reds.</p>
+        </li>
+        <li>
+          <h4>Seasonal timing.</h4>
+          <p>Early-season deficiency (pre-bloom) is hard to score. We recommend nutrient-focused reports from June onward.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OTHER SOLUTIONS -->
+  <section class="tech-section" style="border-top: 1px solid var(--line);">
+    <div class="container">
+      <div class="section-label"><span class="label-bar"></span>OTHER DETECTION MODELS</div>
+      <div class="sol-grid">
+        <a class="sol-card" href="solution-virology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">VIROLOGY</div>
+            <h3>Leafroll & Red Blotch</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-hydrology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">HYDROLOGY</div>
+            <h3>Water Stress Mapping</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-canopy.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">CANOPY</div>
+            <h3>Vigor & Uniformity</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-phenology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">PHENOLOGY</div>
+            <h3>Season Tracking</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-climate.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">CLIMATE</div>
+            <h3>Frost & Heat Risk</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <div class="container">
+      <div style="max-width: 700px; text-align:center; margin: 0 auto;">
+        <h2 class="h-big">
+          See this model run on your <span class="gradient-text-warm">own blocks.</span>
+        </h2>
+        <p class="lead" style="margin-left:auto; margin-right:auto;">
+          Share a boundary and we'll deliver a one-off sample report with
+          this detection model applied to your property. No commitment.
+        </p>
+        <div style="margin-top: 40px;">
+          <a href="contact.html" class="btn btn-primary magnetic" data-hover>
+            <span>Request a sample</span>
+            <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+          </div>
+          <p class="muted">Hyperspectral intelligence for Ontario vineyards. Built in wine country.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="insights.html">Field Notes</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Technology</h4>
+            <a href="technology.html">Hyperspectral</a>
+            <a href="solutions.html">Detection models</a>
+            <a href="technology.html#pipeline">Pipeline</a>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <a href="#">LinkedIn</a>
+            <a href="#">X / Twitter</a>
+            <a href="mailto:hello@spectralinsight.ai">hello@spectralinsight.ai</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Spectral Insight · Ontario, Canada</span>
+        <span class="mono">47.2574°N · 79.0668°W</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

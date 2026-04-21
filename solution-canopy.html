@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vigor & Uniformity — Spectral Insight</title>
+  <meta name="description" content="Canopy density is the classical use-case for satellite imagery. Hyperspectral adds the question every grower actually asks: why?" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-orbit"></div>
+    <div class="loader-progress"></div>
+    <div class="loader-label">LOADING · CANOPY DETAIL</div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-follow"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <canvas class="starfield" id="starfield"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+  <div class="aurora-bottom"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" data-hover>
+        <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+      </a>
+      <nav class="nav-links">
+        <a href="technology.html" data-hover>Technology</a>
+        <a href="solutions.html" class="active" data-hover>Solutions</a>
+        <a href="about.html" data-hover>About</a>
+        <a href="insights.html" data-hover>Field Notes</a>
+        <a href="contact.html" data-hover>Contact</a>
+      </nav>
+      <a href="contact.html" class="cta-pill" data-hover>
+        <span>Request Analysis</span>
+        <span class="cta-arrow">→</span>
+      </a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="technology.html">Technology</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="insights.html">Field Notes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-bg">
+      <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=2400&q=85" alt="" />
+    </div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Spectral Insight</a>
+        <span class="sep">/</span>
+        <a href="solutions.html">Solutions</a>
+        <span class="sep">/</span>
+        <span>Vigor & Uniformity</span>
+      </div>
+      <div class="sol-detail-tag">CANOPY · DETECTION MODEL</div>
+      <h1 class="page-title">Four zones hiding inside <span class="gradient-text">one vineyard.</span></h1>
+      <p class="page-subtitle">Canopy density is the classical use-case for satellite imagery. Hyperspectral adds the question every grower actually asks: why?</p>
+    </div>
+  </section>
+
+  <!-- 01 THE SIGNAL -->
+  <section class="tech-section" id="signal">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        01 · THE SIGNAL
+      </div>
+      <h2 class="h-big">Density is easy. <span class="gradient-text-warm">Cause is what matters.</span></h2>
+      <p class="lead">Measuring canopy density from orbit is a solved problem — NDVI has done it for thirty years. Identifying vigor variation across a block will not surprise anyone who's driven the tractor there.</p>
+      <p class="lead">What's new is decomposing cause. Our model uses the full hyperspectral stack to tell you whether a low-vigor zone is low because of water stress, virus, nutrition, or because the soil simply changes under your feet. Four explanations, four different management responses.</p>
+
+      <table class="spec-table sol-band-table">
+        <tr><th>Band</th><th>Role</th><th>What it reveals</th></tr>
+        <tr>
+          <td class="mono">680 nm</td>
+          <td>CHLOROPHYLL</td>
+          <td>Pigment-density signal.</td>
+        </tr>
+        <tr>
+          <td class="mono">720 nm</td>
+          <td>RED EDGE</td>
+          <td>Structural canopy health.</td>
+        </tr>
+        <tr>
+          <td class="mono">850 nm</td>
+          <td>NIR PLATEAU</td>
+          <td>Raw biomass / leaf area index proxy.</td>
+        </tr>
+        <tr>
+          <td class="mono">970/1450</td>
+          <td>WATER PAIR</td>
+          <td>For cause-decomposition vs. hydrology.</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 02 THE MODEL -->
+  <section class="tech-section" id="model">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        02 · THE MODEL
+      </div>
+      <h2 class="h-big">k-means with a <span class="gradient-text">cause tag.</span></h2>
+      <p class="lead">We cluster each block into four vigor zones using an unsupervised k-means on the hyperspectral feature vector. That clustering is purely descriptive — it tells you what varies, not why.</p>
+      <p class="lead">Then every zone is tagged with its dominant explanatory signal: water-driven, virus-suspect, nutrient-suspect, or soil/topography-driven (when none of the first three explain it). The tag sometimes matches the grower's intuition exactly. Sometimes it doesn't — those are the interesting ones.</p>
+      <p class="lead">We also correlate the zones against your harvest data if you share it. The zones that show up reliably in both vigor and yield are the real management zones, worth naming and tracking year over year.</p>
+    </div>
+  </section>
+
+  <!-- 03 SPECS -->
+  <section class="tech-section" id="specs">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        03 · SPECS
+      </div>
+      <div class="sol-stats-grid">
+        <div class="stat">
+          <div class="stat-num">4-zone</div>
+          <div class="stat-label">MAP OUTPUT</div>
+          <div class="stat-sub">Quartile-based zoning</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Cause-tagged</div>
+          <div class="stat-label">PER ZONE</div>
+          <div class="stat-sub">Four possible cause categories</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Yield-correlated</div>
+          <div class="stat-label">VALIDATED</div>
+          <div class="stat-sub">When harvest data is shared</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Seasonal</div>
+          <div class="stat-label">STABILITY SCORE</div>
+          <div class="stat-sub">How consistent the zones are over time</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 CASE -->
+  <section class="tech-section" id="case">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        04 · A REAL CASE
+      </div>
+      <h2 class="h-big">One vineyard. <span class="gradient-text-warm">Four blocks in disguise.</span></h2>
+      <p class="lead">A 9-hectare Twenty Mile Bench property had been managing their entire Pinot Noir block as a single unit for twelve years. Our first season of mapping revealed four stable zones, not one.</p>
+      <p class="lead">The south-facing corner was soil-driven high vigor (shallow clay, quicker warming). The north edge was water-driven low vigor (a drainage path). The centre had two zones: one virus-suspect (confirmed — GLRaV-3), one simply nutrient-deficient.</p>
+      <p class="lead">They didn't change the whole operation. They did change their sampling scheme, their selective spray timing, and their yield-estimation model. By year three the block's coefficient of variation on brix at harvest had dropped meaningfully.</p>
+    </div>
+  </section>
+
+  <!-- 05 REPORT -->
+  <section class="tech-section" id="report">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        05 · IN YOUR MONTHLY BRIEF
+      </div>
+      <h2 class="h-big">What you'll actually see.</h2>
+      <ul class="report-list">
+        <li>Four-zone vigor map per block</li>
+          <li>Cause tag per zone (water / virus / nutrient / soil-topo)</li>
+          <li>Zone stability score — is this a real zone, or a one-pass artefact?</li>
+          <li>Yield-correlation overlay, if harvest data shared</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 06 LIMITS -->
+  <section class="tech-section" id="limits">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        06 · LIMITS
+      </div>
+      <h2 class="h-big">Things that break the clustering.</h2>
+      <ul class="limits-list">
+        <li>
+          <h4>Very young plantings.</h4>
+          <p>Blocks under year four have too much variability inherent to vine establishment; our cause-decomposition is noisier.</p>
+        </li>
+        <li>
+          <h4>Non-standard training.</h4>
+          <p>Heavily vertical shoot-positioned systems vs. sprawl systems read quite differently. We calibrate to the dominant regional systems; exotic setups get flagged.</p>
+        </li>
+        <li>
+          <h4>Inter-row cover.</h4>
+          <p>If you've changed your inter-row cover-crop mid-season, the zones may shift. We can detect this but not yet fully separate it from the canopy itself.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OTHER SOLUTIONS -->
+  <section class="tech-section" style="border-top: 1px solid var(--line);">
+    <div class="container">
+      <div class="section-label"><span class="label-bar"></span>OTHER DETECTION MODELS</div>
+      <div class="sol-grid">
+        <a class="sol-card" href="solution-virology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">VIROLOGY</div>
+            <h3>Leafroll & Red Blotch</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-hydrology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">HYDROLOGY</div>
+            <h3>Water Stress Mapping</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-nutrition.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1560493676-04071c5f467b?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">NUTRITION</div>
+            <h3>Nutrient Deficiency</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-phenology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">PHENOLOGY</div>
+            <h3>Season Tracking</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-climate.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">CLIMATE</div>
+            <h3>Frost & Heat Risk</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <div class="container">
+      <div style="max-width: 700px; text-align:center; margin: 0 auto;">
+        <h2 class="h-big">
+          See this model run on your <span class="gradient-text-warm">own blocks.</span>
+        </h2>
+        <p class="lead" style="margin-left:auto; margin-right:auto;">
+          Share a boundary and we'll deliver a one-off sample report with
+          this detection model applied to your property. No commitment.
+        </p>
+        <div style="margin-top: 40px;">
+          <a href="contact.html" class="btn btn-primary magnetic" data-hover>
+            <span>Request a sample</span>
+            <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+          </div>
+          <p class="muted">Hyperspectral intelligence for Ontario vineyards. Built in wine country.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="insights.html">Field Notes</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Technology</h4>
+            <a href="technology.html">Hyperspectral</a>
+            <a href="solutions.html">Detection models</a>
+            <a href="technology.html#pipeline">Pipeline</a>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <a href="#">LinkedIn</a>
+            <a href="#">X / Twitter</a>
+            <a href="mailto:hello@spectralinsight.ai">hello@spectralinsight.ai</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Spectral Insight · Ontario, Canada</span>
+        <span class="mono">47.2574°N · 79.0668°W</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

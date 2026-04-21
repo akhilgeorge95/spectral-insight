@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leafroll & Red Blotch — Spectral Insight</title>
+  <meta name="description" content="A virus that takes a full season to show itself. We catch the chlorophyll signal in week one." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-orbit"></div>
+    <div class="loader-progress"></div>
+    <div class="loader-label">LOADING · VIROLOGY DETAIL</div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-follow"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <canvas class="starfield" id="starfield"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+  <div class="aurora-bottom"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" data-hover>
+        <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+      </a>
+      <nav class="nav-links">
+        <a href="technology.html" data-hover>Technology</a>
+        <a href="solutions.html" class="active" data-hover>Solutions</a>
+        <a href="about.html" data-hover>About</a>
+        <a href="insights.html" data-hover>Field Notes</a>
+        <a href="contact.html" data-hover>Contact</a>
+      </nav>
+      <a href="contact.html" class="cta-pill" data-hover>
+        <span>Request Analysis</span>
+        <span class="cta-arrow">→</span>
+      </a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="technology.html">Technology</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="insights.html">Field Notes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-bg">
+      <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=2400&q=85" alt="" />
+    </div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Spectral Insight</a>
+        <span class="sep">/</span>
+        <a href="solutions.html">Solutions</a>
+        <span class="sep">/</span>
+        <span>Leafroll & Red Blotch</span>
+      </div>
+      <div class="sol-detail-tag">VIROLOGY · DETECTION MODEL</div>
+      <h1 class="page-title">Leafroll &amp; <span class="gradient-text">Red Blotch</span></h1>
+      <p class="page-subtitle">A virus that takes a full season to show itself. We catch the chlorophyll signal in week one.</p>
+    </div>
+  </section>
+
+  <!-- 01 THE SIGNAL -->
+  <section class="tech-section" id="signal">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        01 · THE SIGNAL
+      </div>
+      <h2 class="h-big">The chlorophyll drop. <span class="gradient-text-warm">Before chlorophyll looks different.</span></h2>
+      <p class="lead">Grapevine leafroll-associated viruses (GLRaV-1, GLRaV-3) and grapevine red-blotch virus (GRBV) both suppress photosynthetic activity long before the canopy visibly reddens or yellows. That suppression shows up at 680 nm — the chlorophyll absorption band — as a measurable flattening of the reflectance trough.</p>
+      <p class="lead">The red-edge region (690–760 nm) also shifts its inflection point. A healthy Cabernet Franc has its red-edge inflection at roughly 721 nm. A GLRaV-3 infected vine of the same variety, asymptomatic to the eye, sits at 716 nm or below. Five nanometres. Detectable. Invisible to you.</p>
+
+      <table class="spec-table sol-band-table">
+        <tr><th>Band</th><th>Role</th><th>What it reveals</th></tr>
+        <tr>
+          <td class="mono">680 nm</td>
+          <td>CHLOROPHYLL</td>
+          <td>Direct absorption band. Depth of trough indicates chlorophyll a/b content.</td>
+        </tr>
+        <tr>
+          <td class="mono">720 nm</td>
+          <td>RED EDGE</td>
+          <td>Inflection point. Shifts blue-ward under virus stress.</td>
+        </tr>
+        <tr>
+          <td class="mono">750 nm</td>
+          <td>NIR PLATEAU</td>
+          <td>Reference band. Canopy structure, independent of pigment.</td>
+        </tr>
+        <tr>
+          <td class="mono">850 nm</td>
+          <td>NIR</td>
+          <td>Cellular scattering. Baseline for normalization.</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 02 THE MODEL -->
+  <section class="tech-section" id="model">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        02 · THE MODEL
+      </div>
+      <h2 class="h-big">A classifier trained on <span class="gradient-text">three years</span> of Ontario vines.</h2>
+      <p class="lead">Our virology model is a convolutional classifier fine-tuned on a training set of paired hyperspectral cubes and grower-confirmed virus status — 430 blocks across Niagara Peninsula, Prince Edward County, and Lake Erie North Shore, spanning 2023–2025.</p>
+      <p class="lead">It outputs a per-panel probability score between 0 and 1. Panels above 0.6 enter the monthly brief as a watchlist; panels above 0.85 get a recommended ground-confirmation walk.</p>
+      <p class="lead">We deliberately do not train across regions. A Californian leafroll signature looks slightly different from an Ontario one — we picked depth over breadth.</p>
+    </div>
+  </section>
+
+  <!-- 03 SPECS -->
+  <section class="tech-section" id="specs">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        03 · SPECS
+      </div>
+      <div class="sol-stats-grid">
+        <div class="stat">
+          <div class="stat-num">94%</div>
+          <div class="stat-label">TRUE-POSITIVE RATE</div>
+          <div class="stat-sub">On held-out Ontario validation set</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">~3 wk</div>
+          <div class="stat-label">LEAD TIME</div>
+          <div class="stat-sub">vs. visual scout detection</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">0.6 ha</div>
+          <div class="stat-label">MIN BLOCK SIZE</div>
+          <div class="stat-sub">Smaller works but resolution scales</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">GLRaV-1/3 · GRBV</div>
+          <div class="stat-label">VIRUSES SCORED</div>
+          <div class="stat-sub">Ontario-relevant pathogens</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 CASE -->
+  <section class="tech-section" id="case">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        04 · A REAL CASE
+      </div>
+      <h2 class="h-big">Twelve vines, <span class="gradient-text-warm">three weeks early.</span></h2>
+      <p class="lead">In late June 2024 a 14-hectare Beamsville Bench property showed a cluster of twelve panels in block 2 with virus probabilities climbing from 0.3 to 0.7 across two consecutive passes. The grower walked the rows, couldn't see a thing, and called us to confirm.</p>
+      <p class="lead">We sampled. ELISA came back GLRaV-3 positive on eight of the twelve. By the time visible leaf-roll symptoms appeared in late August, the affected vines had already been marked, the neighbouring rows had been inspected, and the removal plan was written. The outbreak stayed under 30 vines.</p>
+      <p class="lead">Without the early flag, the usual story: spread, confusion about the cause, a whole block under suspicion, and a two-season cleanup.</p>
+    </div>
+  </section>
+
+  <!-- 05 REPORT -->
+  <section class="tech-section" id="report">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        05 · IN YOUR MONTHLY BRIEF
+      </div>
+      <h2 class="h-big">What you'll actually see.</h2>
+      <ul class="report-list">
+        <li>Virus probability heatmap for every block, panel-level</li>
+          <li>Flagged panel list with coordinates and score</li>
+          <li>Recommended scout walk priorities</li>
+          <li>Comparison to previous month's score — trending up / stable / resolved</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 06 LIMITS -->
+  <section class="tech-section" id="limits">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        06 · LIMITS
+      </div>
+      <h2 class="h-big">What we can't tell you (yet).</h2>
+      <ul class="limits-list">
+        <li>
+          <h4>Variety-specific calibration.</h4>
+          <p>The model currently treats Cabernet Franc, Merlot, and Pinot Noir with the same baseline. Variety-specific tuning is on the 2026 roadmap.</p>
+        </li>
+        <li>
+          <h4>Distinguishing virus from stress.</h4>
+          <p>Severe water stress and advanced leafroll can look similar at 680 nm. We cross-check with the water-stress model before flagging, but in extreme drought the signal is genuinely ambiguous.</p>
+        </li>
+        <li>
+          <h4>Early spring.</h4>
+          <p>Before full canopy close-up (typically pre-bloom), pixel mixing with soil makes virus scoring unreliable. We start scoring at around E-L stage 17.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OTHER SOLUTIONS -->
+  <section class="tech-section" style="border-top: 1px solid var(--line);">
+    <div class="container">
+      <div class="section-label"><span class="label-bar"></span>OTHER DETECTION MODELS</div>
+      <div class="sol-grid">
+        <a class="sol-card" href="solution-hydrology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">HYDROLOGY</div>
+            <h3>Water Stress Mapping</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-nutrition.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1560493676-04071c5f467b?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">NUTRITION</div>
+            <h3>Nutrient Deficiency</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-canopy.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">CANOPY</div>
+            <h3>Vigor & Uniformity</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-phenology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">PHENOLOGY</div>
+            <h3>Season Tracking</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-climate.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">CLIMATE</div>
+            <h3>Frost & Heat Risk</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <div class="container">
+      <div style="max-width: 700px; text-align:center; margin: 0 auto;">
+        <h2 class="h-big">
+          See this model run on your <span class="gradient-text-warm">own blocks.</span>
+        </h2>
+        <p class="lead" style="margin-left:auto; margin-right:auto;">
+          Share a boundary and we'll deliver a one-off sample report with
+          this detection model applied to your property. No commitment.
+        </p>
+        <div style="margin-top: 40px;">
+          <a href="contact.html" class="btn btn-primary magnetic" data-hover>
+            <span>Request a sample</span>
+            <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+          </div>
+          <p class="muted">Hyperspectral intelligence for Ontario vineyards. Built in wine country.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="insights.html">Field Notes</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Technology</h4>
+            <a href="technology.html">Hyperspectral</a>
+            <a href="solutions.html">Detection models</a>
+            <a href="technology.html#pipeline">Pipeline</a>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <a href="#">LinkedIn</a>
+            <a href="#">X / Twitter</a>
+            <a href="mailto:hello@spectralinsight.ai">hello@spectralinsight.ai</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Spectral Insight · Ontario, Canada</span>
+        <span class="mono">47.2574°N · 79.0668°W</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

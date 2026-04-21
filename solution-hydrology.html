@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Water Stress Mapping — Spectral Insight</title>
+  <meta name="description" content="Short-wave infrared bands see water the way a well sees wet — directly. Here's how we turn that into an irrigation map." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="loader" id="loader">
+    <div class="loader-orbit"></div>
+    <div class="loader-progress"></div>
+    <div class="loader-label">LOADING · HYDROLOGY DETAIL</div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-follow"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <canvas class="starfield" id="starfield"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+  <div class="aurora-bottom"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" data-hover>
+        <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+      </a>
+      <nav class="nav-links">
+        <a href="technology.html" data-hover>Technology</a>
+        <a href="solutions.html" class="active" data-hover>Solutions</a>
+        <a href="about.html" data-hover>About</a>
+        <a href="insights.html" data-hover>Field Notes</a>
+        <a href="contact.html" data-hover>Contact</a>
+      </nav>
+      <a href="contact.html" class="cta-pill" data-hover>
+        <span>Request Analysis</span>
+        <span class="cta-arrow">→</span>
+      </a>
+      <button class="nav-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="technology.html">Technology</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="about.html">About</a>
+      <a href="insights.html">Field Notes</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="page-header-bg">
+      <img src="https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=2400&q=85" alt="" />
+    </div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Spectral Insight</a>
+        <span class="sep">/</span>
+        <a href="solutions.html">Solutions</a>
+        <span class="sep">/</span>
+        <span>Water Stress Mapping</span>
+      </div>
+      <div class="sol-detail-tag">HYDROLOGY · DETECTION MODEL</div>
+      <h1 class="page-title">Water stress, <span class="gradient-text">panel by panel.</span></h1>
+      <p class="page-subtitle">Short-wave infrared bands see water the way a well sees wet — directly. Here's how we turn that into an irrigation map.</p>
+    </div>
+  </section>
+
+  <!-- 01 THE SIGNAL -->
+  <section class="tech-section" id="signal">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        01 · THE SIGNAL
+      </div>
+      <h2 class="h-big">Water absorbs at <span class="gradient-text-warm">970 nm</span>. The deeper the trough, the wetter the leaf.</h2>
+      <p class="lead">Leaf water content is one of the few plant properties that has an almost direct optical signature. Water molecules absorb strongly at specific NIR and SWIR wavelengths — notably 970 nm, 1200 nm, 1450 nm, and 1940 nm. Each shows up in a leaf's reflectance curve as a distinct absorption trough.</p>
+      <p class="lead">When a canopy is under water stress, the troughs fill in. The curve flattens. A healthy Ontario vine in July has a 970 nm trough depth around 0.24. A stressed vine at the same hour might sit at 0.12 — the tissue is physically carrying less water.</p>
+
+      <table class="spec-table sol-band-table">
+        <tr><th>Band</th><th>Role</th><th>What it reveals</th></tr>
+        <tr>
+          <td class="mono">970 nm</td>
+          <td>WATER 1</td>
+          <td>First water absorption band. Most reliable for mild-stress detection.</td>
+        </tr>
+        <tr>
+          <td class="mono">1240 nm</td>
+          <td>WATER 2</td>
+          <td>Secondary band. Confirms 970 nm signal, independent of LAI.</td>
+        </tr>
+        <tr>
+          <td class="mono">1450 nm</td>
+          <td>WATER 3</td>
+          <td>Strong trough. Sensitive, but affected by atmosphere.</td>
+        </tr>
+        <tr>
+          <td class="mono">1650 nm</td>
+          <td>SWIR REF</td>
+          <td>Reference band between water features. Used for normalization.</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 02 THE MODEL -->
+  <section class="tech-section" id="model">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        02 · THE MODEL
+      </div>
+      <h2 class="h-big">CWSI, <span class="gradient-text">per panel.</span></h2>
+      <p class="lead">We convert the raw water-absorption signatures into a Crop Water Stress Index (CWSI) per panel. 0.0 is fully hydrated; 1.0 is severe stress. Most healthy Ontario vines sit between 0.08 and 0.22 through the season.</p>
+      <p class="lead">The CWSI is not a raw band ratio — it's calibrated to your climate zone, training system, and prior-year baseline. A CWSI of 0.35 in Niagara in July means something different than the same value in PEC in August.</p>
+      <p class="lead">Paired with your topographic map, the output becomes an irrigation priority list: which blocks, which panels, and in what order.</p>
+    </div>
+  </section>
+
+  <!-- 03 SPECS -->
+  <section class="tech-section" id="specs">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        03 · SPECS
+      </div>
+      <div class="sol-stats-grid">
+        <div class="stat">
+          <div class="stat-num">5 m</div>
+          <div class="stat-label">PANEL RESOLUTION</div>
+          <div class="stat-sub">Per-panel, not per-block averaging</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Weekly</div>
+          <div class="stat-label">UPDATE CADENCE</div>
+          <div class="stat-sub">Through the growing season</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">CWSI</div>
+          <div class="stat-label">OUTPUT METRIC</div>
+          <div class="stat-sub">Calibrated 0.0–1.0 index</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">0–14 d</div>
+          <div class="stat-label">LEAD VS. SYMPTOMS</div>
+          <div class="stat-sub">Before visible wilt</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 CASE -->
+  <section class="tech-section" id="case">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        04 · A REAL CASE
+      </div>
+      <h2 class="h-big">A dripline clog, <span class="gradient-text-warm">caught in July.</span></h2>
+      <p class="lead">Mid-July 2024, a Niagara Bench Cabernet Franc block started showing CWSI climbing in rows 15–22 — from 0.14 to 0.38 in two weeks. Everything else on the property read normal.</p>
+      <p class="lead">The grower walked the rows. Canopy looked good. But the dripline on that block segment turned out to have a partial block from root growth and was delivering maybe 40% of its intended flow.</p>
+      <p class="lead">Caught then, it was a thirty-minute fix. Caught at veraison, it would have cost quality points and brix uniformity across the block. The signal was there two weeks before any vine looked 'off'.</p>
+    </div>
+  </section>
+
+  <!-- 05 REPORT -->
+  <section class="tech-section" id="report">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        05 · IN YOUR MONTHLY BRIEF
+      </div>
+      <h2 class="h-big">What you'll actually see.</h2>
+      <ul class="report-list">
+        <li>CWSI heatmap per block, five-zone rendering</li>
+          <li>Panels flagged as climbing vs. stable vs. descending</li>
+          <li>Irrigation priority list by block and panel range</li>
+          <li>Overlay with current-week precipitation forecast</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 06 LIMITS -->
+  <section class="tech-section" id="limits">
+    <div class="container">
+      <div class="section-label">
+        <span class="label-bar"></span>
+        06 · LIMITS
+      </div>
+      <h2 class="h-big">Honest about the edges.</h2>
+      <ul class="limits-list">
+        <li>
+          <h4>Recent rainfall.</h4>
+          <p>The day after a 20 mm rain event, canopy surface water confuses the 970 nm signal for 12–24 hours. We flag these passes in the brief and defer.</p>
+        </li>
+        <li>
+          <h4>Heavy morning dew.</h4>
+          <p>Similar issue. For Ontario mornings we capture windows, our atmospheric correction handles most of it, but extreme dew days will be marked 'deferred'.</p>
+        </li>
+        <li>
+          <h4>Rootstock differences.</h4>
+          <p>Vines on drought-tolerant rootstocks show less 970 nm flattening under the same soil-water deficit. The model is rootstock-aware where you tell us, rootstock-blind where you don't.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OTHER SOLUTIONS -->
+  <section class="tech-section" style="border-top: 1px solid var(--line);">
+    <div class="container">
+      <div class="section-label"><span class="label-bar"></span>OTHER DETECTION MODELS</div>
+      <div class="sol-grid">
+        <a class="sol-card" href="solution-virology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">VIROLOGY</div>
+            <h3>Leafroll & Red Blotch</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-nutrition.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1560493676-04071c5f467b?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">NUTRITION</div>
+            <h3>Nutrient Deficiency</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-canopy.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">CANOPY</div>
+            <h3>Vigor & Uniformity</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-phenology.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">PHENOLOGY</div>
+            <h3>Season Tracking</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+        <a class="sol-card" href="solution-climate.html" data-hover>
+          <div class="sol-img" style="background-image:url('https://images.unsplash.com/photo-1446776709462-d6b525c57bd3?w=900&q=85');"></div>
+          <div class="sol-body">
+            <div class="sol-tag">CLIMATE</div>
+            <h3>Frost & Heat Risk</h3>
+            <div class="sol-link">View detail <span>→</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <div class="container">
+      <div style="max-width: 700px; text-align:center; margin: 0 auto;">
+        <h2 class="h-big">
+          See this model run on your <span class="gradient-text-warm">own blocks.</span>
+        </h2>
+        <p class="lead" style="margin-left:auto; margin-right:auto;">
+          Share a boundary and we'll deliver a one-off sample report with
+          this detection model applied to your property. No commitment.
+        </p>
+        <div style="margin-top: 40px;">
+          <a href="contact.html" class="btn btn-primary magnetic" data-hover>
+            <span>Request a sample</span>
+            <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">
+            <img src="logo.png" alt="Spectral Insight" class="logo-img" />
+          </div>
+          <p class="muted">Hyperspectral intelligence for Ontario vineyards. Built in wine country.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">About</a>
+            <a href="insights.html">Field Notes</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Technology</h4>
+            <a href="technology.html">Hyperspectral</a>
+            <a href="solutions.html">Detection models</a>
+            <a href="technology.html#pipeline">Pipeline</a>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <a href="#">LinkedIn</a>
+            <a href="#">X / Twitter</a>
+            <a href="mailto:hello@spectralinsight.ai">hello@spectralinsight.ai</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Spectral Insight · Ontario, Canada</span>
+        <span class="mono">47.2574°N · 79.0668°W</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
