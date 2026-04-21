@@ -300,12 +300,15 @@ button { font: inherit; cursor: none; border: none; background: none; color: inh
   transition: transform .3s;
 }
 
+.nav-mobile { display: none; }
+
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .nav-menu-btn { display: flex; }
   .cta-pill { display: none; }
 
   .nav-mobile {
+    display: block;
     position: fixed; inset: 64px 0 0 0;
     background: var(--bg);
     padding: 40px var(--pad);
