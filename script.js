@@ -41,17 +41,19 @@ window.addEventListener('load', () => {
   });
 })();
 
-/* ---------- Starfield canvas ---------- */
+/* ---------- Starfield + constellation lines ---------- */
 (() => {
   const canvas = document.getElementById('starfield');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let w, h, stars;
+  const LINK_DIST = 140; // draw faint line between stars within this many px
 
   const resize = () => {
     w = canvas.width = innerWidth;
     h = canvas.height = innerHeight;
-    stars = Array.from({ length: 140 }, () => ({
+    const count = innerWidth < 700 ? 80 : 160;
+    stars = Array.from({ length: count }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
       z: Math.random() * 0.8 + 0.2,
@@ -64,6 +66,8 @@ window.addEventListener('load', () => {
 
   const tick = () => {
     ctx.clearRect(0, 0, w, h);
+
+    // draw stars
     for (const s of stars) {
       s.y += s.v;
       if (s.y > h) s.y = 0;
@@ -76,9 +80,96 @@ window.addEventListener('load', () => {
       ctx.arc(s.x, s.y, s.z * 1.5, 0, Math.PI * 2);
       ctx.fill();
     }
+
+    // draw constellation lines between near-neighbours (sparse, for ambience)
+    for (let i = 0; i < stars.length; i++) {
+      const a = stars[i];
+      for (let j = i + 1; j < stars.length; j++) {
+        const b = stars[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const d2 = dx*dx + dy*dy;
+        if (d2 < LINK_DIST * LINK_DIST) {
+          const t = 1 - Math.sqrt(d2) / LINK_DIST;
+          ctx.strokeStyle = `rgba(53, 195, 255, ${t * 0.12})`;
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
     requestAnimationFrame(tick);
   };
   tick();
+})();
+
+/* ---------- Constellation satellite telemetry (simulated live) ---------- */
+(() => {
+  const s1Alt = document.getElementById('s1Alt');
+  if (!s1Alt) return;
+  const s1Vel = document.getElementById('s1Vel');
+  const s1Lat = document.getElementById('s1Lat');
+  const s2Alt = document.getElementById('s2Alt');
+  const s2Vel = document.getElementById('s2Vel');
+  const s2Band = document.getElementById('s2Band');
+  const s3Alt = document.getElementById('s3Alt');
+  const s3Rx = document.getElementById('s3Rx');
+
+  const bands = ['450nm','520nm','680nm','720nm','850nm','970nm','1240nm','1450nm','2200nm'];
+  let i = 0;
+  setInterval(() => {
+    const j = (x, r = 0.3) => (x + (Math.random() * r - r/2));
+    s1Alt.textContent = j(525.3).toFixed(1);
+    s1Vel.textContent = j(7.62, 0.02).toFixed(3);
+    s1Lat.textContent = j(47.2, 0.6).toFixed(2) + '°N';
+    s2Alt.textContent = j(518.8).toFixed(1);
+    s2Vel.textContent = j(7.64, 0.02).toFixed(3);
+    s2Band.textContent = bands[i % bands.length];
+    s3Alt.textContent = j(531.1).toFixed(1);
+    s3Rx.textContent = j(84.2, 3).toFixed(1);
+    i++;
+  }, 1400);
+})();
+
+/* ---------- Wavelength picker readout ---------- */
+(() => {
+  const out = document.getElementById('wpCurrent');
+  if (!out) return;
+  const stops = [
+    { t: 0.06, text: '450 nm · blue edge' },
+    { t: 0.30, text: '680 nm · chlorophyll' },
+    { t: 0.44, text: '850 nm · NIR plateau' },
+    { t: 0.52, text: '970 nm · water' },
+    { t: 0.72, text: '1450 nm · water · SWIR' },
+    { t: 0.92, text: '2200 nm · lignin · SWIR' },
+  ];
+  let idx = 0;
+  const DUR = 8000;
+  const t0 = performance.now();
+  const tick = (t) => {
+    const p = ((t - t0) % DUR) / DUR;
+    // approximate picker position: 0→0.06, 0.25→0.38, 0.5→0.62, 0.75→0.9
+    let pos;
+    if      (p < 0.25) pos = 0.06 + (0.38 - 0.06) * (p / 0.25);
+    else if (p < 0.50) pos = 0.38 + (0.62 - 0.38) * ((p - 0.25) / 0.25);
+    else if (p < 0.75) pos = 0.62 + (0.90 - 0.62) * ((p - 0.50) / 0.25);
+    else               pos = 0.90 - (0.90 - 0.06) * ((p - 0.75) / 0.25);
+    // find closest stop
+    let best = 0, bestD = Infinity;
+    for (let i = 0; i < stops.length; i++) {
+      const d = Math.abs(stops[i].t - pos);
+      if (d < bestD) { bestD = d; best = i; }
+    }
+    if (best !== idx) {
+      idx = best;
+      out.textContent = stops[best].text;
+    }
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
 })();
 
 /* ---------- Scroll progress ---------- */
