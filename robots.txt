@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Priority for Canadian market crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://akhilgeorge95.github.io/spectral-insight/sitemap.xml
